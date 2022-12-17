@@ -1,11 +1,85 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset=utf-8 />
-<title>Ejercicio 01 Modificar informacion de numero. </title>
-<link rel="stylesheet" href="css/estilo.css"></style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pucherin</title>
+    <link rel="stylesheet" href="css/tablero.css">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
 </head>
+
 <body>
-  dsad
+    
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            <div class="col-3 justify-content-center">
+              <h2>PUCHERIN</h2>
+              <p>Seleccionar las caracteristicas que tendra la partida</p>
+            </div>
+            <form >
+              <label for="jugadores">Jugadores:</label>
+              <input type="number" id="jugadores" name="jugadores" required max="6" min="2">
+              <input type="submit">
+            </form>
+        </div>
+    
+      </div>
+    
+    
+    
+    <div class="container-fluid p-0" id="grafico" style="display:none">
+        <div class="row">
+            <div class="col-7 p-0">
+                        <div id="tablero" class="box"><div class="border col-2 bg-light" id="bote">Hay un total de 40 fichas</div>
+        </div>
+            </div>
+            <div class="col-5 bg-info p-0">
+                <div class="row justify-content-center mt-5">
+                    <div class="col-4 border">Jugador</div></div>
+                <div class="row justify-content-around mt-5">
+                    <div class="col-3 border">Dados</div>
+                    <div class="col-3 border">Fichas Que quedan</div>
+                </div>
+                <div class="row justify-content-center mt-5">
+                    <div class="row justify-content-center ">
+                        <div class="col-3 border">jug1</div>
+                        <div class="col-3 border">Fichas:X</div>
+                    </div>
+                    <div class="row justify-content-center ">
+                        <div class="col-3 border">jug2</div>
+                        <div class="col-3 border">Fichas:X</div>
+                    </div>
+                    <div class="row justify-content-center ">
+                        <div class="col-3 border">jug3</div>
+                        <div class="col-3 border">Fichas:X</div>
+                    </div>
+                    <div class="row justify-content-center ">
+                        <div class="col-3 border">jug4</div>
+                        <div class="col-3 border">Fichas:X</div>
+                    </div>
+                    <div class="row justify-content-center ">
+                        <div class="col-3 border">jug5</div>
+                        <div class="col-3 border">Fichas:X</div>
+                    </div>
+                    <div class="row justify-content-center ">
+                        <div class="col-3 border">jug6</div>
+                        <div class="col-3 border">Fichas:X</div>
+                    </div>
+
+
+                </div>
+            
+              
+                <div class="row justify-content-center mt-5">
+                    <div class="col-3 border">boton</div> </div>
+            </div>
+
+        </div>
+
+        
+      </div>
+        <p id="funciona"></p>
 </body>
+<script src="js/tablero.js"></script>
+<script src="js/bootstrap.bundle.min.js"></script>
 </html>

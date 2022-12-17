@@ -121,3 +121,14 @@ function pintarPuchero(canvas){
 
 
 //-----------LOGICA JUGAR----------
+
+
+const jugadores = document.getElementById("jugadores");
+const boton = document.getElementById("mostrar");
+const p = document.getElementById("funciona");
+
+boton.addEventListener("click",mostar);
+
+function mostar() {
+  p.innerHTML = jugadores.value;
+}
