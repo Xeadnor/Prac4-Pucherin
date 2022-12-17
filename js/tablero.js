@@ -118,20 +118,3 @@ function pintarPuchero(canvas){
 //pintarCasilla(canvases[2], 4, 2); // pinta dos fichas en el 4
 //pintarCasilla(canvases[8], 11, 5); // pinta 5 fichas en el 11
 //pintarCasilla(canvases[6], 9, 3); // pinta 3 fichas en el 9
-
-
-//-----------LOGICA JUGAR----------
-
-
-const jugadores = document.getElementById("jugadores");
-const boton = document.getElementById("mostrar");
-const p = document.getElementById("funciona");
-
-
-boton.addEventListener("click",mostar);
-
-function mostar(e) {
-  e.preventDefault();
-  document.getElementById("opciones").style.display="none" 
-  document.getElementById("grafico").style.display="block" 
-}

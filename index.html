@@ -12,15 +12,24 @@
     
     <div class="container-fluid" id="opciones">
         <div class="row justify-content-center">
-            <div class="col-3 justify-content-center">
+            <div class="col-3">
               <h2>PUCHERIN</h2>
-              <p>Seleccionar las caracteristicas que tendra la partida</p>
+              <p>Antes de jugar selecciona las caracteristicas que quieres que tenga la partida</p>
+            </div>           
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-3">
+                <form id="form">
+                <label for="jugadores">Jugadores:</label></br>
+                <input type="number" id="jugadores" name="jugadores" placeholder="De 2 a 6 jugadores"max="6" min="2" required></br>
+                <label for="fichas">Fichas por cada jugador:</label></br>
+                <input type="radio" name="fichas" id="fichas" value="30" required>30
+                <input type="radio" name="fichas" id="fichas" value="40" required>40
+                <input type="radio" name="fichas" id="fichas" value="50" required>50</br>
+                <input type="submit">
+              </form>
             </div>
-            <form >
-              <label for="jugadores">Jugadores:</label>
-              <input type="number" id="jugadores" name="jugadores" required max="6" min="2">
-              <input type="submit" id="mostrar">
-            </form>
+              
         </div>
     
       </div>
@@ -38,9 +47,9 @@
                     <div class="col-4 border">Jugador</div></div>
                 <div class="row justify-content-around mt-5">
                     <div class="col-3 border">Dados</div>
-                    <div class="col-3 border">Fichas Que quedan</div>
+                    <div class="col-3 border" id="fichasR">Fichas Que quedan</div>
                 </div>
-                <div class="row justify-content-center mt-5">
+                <div class="row justify-content-center mt-5" id="listajugadores">
                     <div class="row justify-content-center ">
                         <div class="col-3 border">jug1</div>
                         <div class="col-3 border">Fichas:X</div>
@@ -81,5 +90,6 @@
         <p id="funciona"></p>
 </body>
 <script src="js/tablero.js"></script>
+<script src="js/jugar.js"></script>
 <script src="js/bootstrap.bundle.min.js"></script>
 </html>
