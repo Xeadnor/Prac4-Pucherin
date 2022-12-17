@@ -127,8 +127,11 @@ const jugadores = document.getElementById("jugadores");
 const boton = document.getElementById("mostrar");
 const p = document.getElementById("funciona");
 
+
 boton.addEventListener("click",mostar);
 
-function mostar() {
-  p.innerHTML = jugadores.value;
+function mostar(e) {
+  e.preventDefault();
+  document.getElementById("opciones").style.display="none" 
+  document.getElementById("grafico").style.display="block" 
 }
