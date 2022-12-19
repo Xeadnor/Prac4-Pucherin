@@ -33,15 +33,15 @@ html,body{
   .puchero {
     margin: 0;
     position: absolute;
-    top: 42%;
-    left: 30%;
+    top: 20vw;
+    left: 25vw;
   }
   
   #bote{
     margin: 0;
     position: absolute;
-    top: 63%;
-    left: 28%;
+    top: 29.5vw;
+    left: 24.5vw;
   }
   
   
