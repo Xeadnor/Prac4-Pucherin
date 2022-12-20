@@ -108,3 +108,9 @@ if(valorFicha[0].checked){
 
 
 }
+
+
+// Cuando el dado saca 11 sale el siguiente error: 
+/*Uncaught TypeError TypeError: Cannot read properties of undefined (reading 'getContext')
+    at pintarCasilla (c:\Users\Pablo\Desktop\pucherin\Prac4-Pucherin-5\js\tablero.js:55:20)
+    at Jugar (c:\Users\Pablo\Desktop\pucherin\Prac4-Pucherin-5\js\jugar.js:89:9)*/
