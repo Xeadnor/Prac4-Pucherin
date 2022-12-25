@@ -6,6 +6,7 @@
     <title>Pucherin</title>
     <link rel="stylesheet" href="css/tablero.css">
     <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/dados.css" />
 </head>
 
 <body>
@@ -39,14 +40,93 @@
     <div class="container-fluid p-0" id="grafico" style="display:none">
         <div class="row col-12 m-0 p-0">
             <div class="col-7 p-0">
-                        <div id="tablero" class="box"><div class="border col-2 bg-light" id="bote">Hay 40 fichas en el puchero</div>
+                        <div id="tablero" class="box"><div class="border col-2 bg-light" id="bote">Hay 0 fichas en el puchero</div>
         </div>
             </div>
             <div class="col-5 bg-info p-0">
                 <div class="row col-12 justify-content-center mt-5">
-                    <div class="col-4 border" id="turno">turno del Jugador1</div></div>
+                    <div class="col-4 border" id="turno">Turno del jugador:</div></div>
                 <div class="row col-12 justify-content-around mt-5">
-                    <div class="col-3 border" id="nDados">Dados</div>
+                    <div class="col-4 border d-flex" id="nDados">
+
+                        <div id="dice" data-side="1">
+                            <div class="sides side-1">
+                                <span class="dot dot-1"></span>
+                            </div>
+                            <div class="sides side-2">
+                                <span class="dot dot-1"></span>
+                                <span class="dot dot-2"></span>
+                            </div>
+                            <div class="sides side-3">
+                                <span class="dot dot-1"></span>
+                                <span class="dot dot-2"></span>  
+                                <span class="dot dot-3"></span>
+                            </div>
+                            <div class="sides side-4">
+                                <span class="dot dot-1"></span>
+                                <span class="dot dot-2"></span>  
+                                <span class="dot dot-3"></span>
+                                <span class="dot dot-4"></span>
+                            </div>
+                            <div class="sides side-5">
+                                <span class="dot dot-1"></span>
+                                <span class="dot dot-2"></span>  
+                                <span class="dot dot-3"></span>
+                                <span class="dot dot-4"></span>
+                                <span class="dot dot-5"></span>
+                            </div>
+                            <div class="sides side-6">
+                                <span class="dot dot-1"></span>
+                                <span class="dot dot-2"></span>  
+                                <span class="dot dot-3"></span>
+                                <span class="dot dot-4"></span>
+                                <span class="dot dot-5"></span>
+                                <span class="dot dot-6"></span>
+                            </div>
+                        </div>
+                        
+                        <div id="dice2" data-side="1">
+                          <div class="sides side-1">
+                              <span class="dot dot-1"></span>
+                          </div>
+                          <div class="sides side-2">
+                              <span class="dot dot-1"></span>
+                              <span class="dot dot-2"></span>
+                          </div>
+                          <div class="sides side-3">
+                              <span class="dot dot-1"></span>
+                              <span class="dot dot-2"></span>  
+                              <span class="dot dot-3"></span>
+                          </div>
+                          <div class="sides side-4">
+                              <span class="dot dot-1"></span>
+                              <span class="dot dot-2"></span>  
+                              <span class="dot dot-3"></span>
+                              <span class="dot dot-4"></span>
+                          </div>
+                          <div class="sides side-5">
+                              <span class="dot dot-1"></span>
+                              <span class="dot dot-2"></span>  
+                              <span class="dot dot-3"></span>
+                              <span class="dot dot-4"></span>
+                              <span class="dot dot-5"></span>
+                          </div>
+                          <div class="sides side-6">
+                              <span class="dot dot-1"></span>
+                              <span class="dot dot-2"></span>  
+                              <span class="dot dot-3"></span>
+                              <span class="dot dot-4"></span>
+                              <span class="dot dot-5"></span>
+                              <span class="dot dot-6"></span>
+                          </div>
+                      </div>
+
+
+
+
+
+
+                    </div>
                     <div class="col-3 border" id="fichasR">Fichas Que quedan</div>
                 </div>
                 <div class="row col-12  justify-content-center mt-5" id="listajugadores">

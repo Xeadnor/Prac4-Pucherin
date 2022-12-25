@@ -12,21 +12,15 @@ form.addEventListener("submit",grafico);
 
 function grafico(e) {
   e.preventDefault();
-  function crearJugador(name) {
+  var primerT = (primerTurno()-1);
+  function crearJugador(name,fichas) {
     return {
       name: name,
-      fichasRecibidas: 0//poner fichas que te quedan por poner
+      fichasRecibidas: fichas,
+      fichasObtenidas: 0
 
     };
   }
-
-  //array de jugadores que se rellena según el num selecionado
-  const array = [];
-  for (let i = 1; i <= jugadores.value; i++) {
-    let jugador = crearJugador("Jugador " + i);
-    array.push(jugador);
-  }
-
 if(valorFicha[0].checked){
   fichasTotales = 30;
 }else if (valorFicha[1].checked) {
@@ -34,8 +28,14 @@ if(valorFicha[0].checked){
 }else if (valorFicha[2].checked) {
   fichasTotales = 50;
 }
+  //array de jugadores que se rellena según el num selecionado
+const array = [];
+for (let i = 1; i <= jugadores.value; i++) {
+  let jugador = crearJugador("Jugador " + i,fichasTotales);
+  array.push(jugador);
+}
 
-  document.getElementById("fichasR").innerHTML = "Quedan por dar " + fichasTotales + " fichas";
+  document.getElementById("fichasR").innerHTML = "Quedan por dar ... fichas";
   document.getElementById("opciones").style.display="none" 
   document.getElementById("grafico").style.display="block" 
   var text = "";
@@ -51,10 +51,14 @@ if(valorFicha[0].checked){
   function cambiarTextoBoton() {
     botonJ.innerHTML="Tirar dados"
   }
+  
 
   //Cambia título del encabezado
   function cambiarTurnoJugador(jugador) {
     turno.innerHTML= "Turno del jugador: " + jugador;
+  }
+  function cambiarFichasJugador(fichas) {
+    document.getElementById("fichasR").innerHTML = "Quedan por dar " + fichas + " fichas"
   }
 
   
@@ -73,44 +77,73 @@ if(valorFicha[0].checked){
 
 
 
+      
+
+function sonarDados(numeroDados) {
+  const audio = new Audio("sonidos/dados.mp3");
+  audio.play();
+  setTimeout(() => {
+    botonJ.disabled = false;
+  }, 2300)
+}
+
+
+
+const dice = document.getElementById('dice');
+const dice2 = document.getElementById('dice2');
+
+function rollDice() {
+    let result = Math.floor(Math.random() * (6 - 1 + 1)) + 1;
+    let result2 =  Math.floor(Math.random() * (6 - 1 + 1)) + 1;
+    dice.dataset.side = result;
+    dice2.dataset.side=result2;
+    dice.classList.toggle("reRoll");
+    dice2.classList.toggle("reRoll");
+
+    return result+result2;
+
+}
+
   //---------------Función principal del juego que llama al resto de funciones-------------
   function Jugar(e) {
     e.preventDefault();
-
+    cambiarTurnoJugador(array[primerT].name)
+    cambiarFichasJugador(array[primerT].fichasRecibidas)
     if(botonJ.innerHTML == "Tirar dados"){
-      var primerT = primerTurno();
-      cambiarTurnoJugador(array[primerT-1].name)
+      botonJ.disabled = true;
+      var numeroDados = rollDice();
+      sonarDados(numeroDados)
 
-      var numeroDados = tirarDados();
-      nDados.innerHTML = numeroDados
+      switch (numeroDados) {
+        case 1: case 2: case 3: case 4: case 5: case 6:
+          pintarCasilla(canvases[numeroDados-2], numeroDados, 1)
+          break;
+        case 7:
+   
 
-      //pintar casilla de la ficha correspondiente al num del dado
-      if(numeroDados!=7 && numeroDados!=12 ){
-        pintarCasilla(canvases[numeroDados-2],numeroDados, 1);
-      }else{
-        //TODO aquí falta añadir lo que haría en caso de sacar 7
-      }//TODO else lo que haría al sacar 12, o tambien se puede hacer con un switch
-      
+          break;  
+          case 8: case 9: case 10: case 11:
+          pintarCasilla(canvases[numeroDados-3], numeroDados, 1)
 
-      //restar una ficha al total de fichas del jugador
-      array[primerT-1].fichasRecibidas-=1;
+          break;
+        default:
+       
 
-      //TODO aquí iría el cambio de turno
-        /* if (primerT != array.lenght ){
-          primerT++
-        }else{
-          primerT=1
-        }  y se volvería a empezar lo anterior */
-
+          break;
+      }
+      array[primerT].fichasRecibidas--;
+      primerT++;
+      if(primerT == jugadores.value){
+        primerT = 0;
+      }
     }
+    cambiarTurnoJugador(array[primerT].name)
+    cambiarFichasJugador(array[primerT].fichasRecibidas)
     cambiarTextoBoton();
+    
+    
   }
 
 
 }
 
-
-// Cuando el dado saca 11 sale el siguiente error: 
-/*Uncaught TypeError TypeError: Cannot read properties of undefined (reading 'getContext')
-    at pintarCasilla (c:\Users\Pablo\Desktop\pucherin\Prac4-Pucherin-5\js\tablero.js:55:20)
-    at Jugar (c:\Users\Pablo\Desktop\pucherin\Prac4-Pucherin-5\js\jugar.js:89:9)*/
