@@ -6,11 +6,13 @@ const valorFicha = document.getElementsByName('fichas');
 const botonJ = document.getElementById("botonJ");
 const nDados = document.getElementById("nDados");
 const turno = document.getElementById("turno");
+const bote = document.getElementById("bote");
 var fichasTotales = 0;
 
 form.addEventListener("submit",grafico);
 
 function grafico(e) {
+  var fichasBote = 0;
   e.preventDefault();
   var primerT = (primerTurno()-1);
   function crearJugador(name,fichas) {
@@ -38,13 +40,17 @@ for (let i = 1; i <= jugadores.value; i++) {
   document.getElementById("fichasR").innerHTML = "Quedan por dar ... fichas";
   document.getElementById("opciones").style.display="none" 
   document.getElementById("grafico").style.display="block" 
-  var text = "";
+
+  function pintarPuntuacion() {
+      var text = "";
   for (let i = 0; i < jugadores.value; i++) {
-    text += ("<div class='row justify-content-center'><div class='col-3 border'>" + array[i].name  + "</div><div class='col-3 border'>Fichas:X</div> </div>")    + "<br>";
+    text += ("<div class='row justify-content-center'><div class='col-3 border'>" + array[i].name  + "</div><div class='col-3 border'> Fichas: " + array[i].fichasObtenidas + "</div> </div>")    + "<br>";
     
   }
 
   document.getElementById("listajugadores").innerHTML= text;
+  }
+
 
   //Cambiar boton a tirar dados:
   botonJ.addEventListener("click",Jugar)
@@ -71,23 +77,17 @@ for (let i = 1; i <= jugadores.value; i++) {
   function primerTurno(){
         return Math.floor(Math.random() * (jugadores.value - 1 + 1) + 1)
   }
-
-
-
-
-
-
       
-
+//Funcion que realiza el sonido al tirar los dados, ademas de cancelar el uso de darle al boton otra vez por x tiempo
 function sonarDados(numeroDados) {
   const audio = new Audio("sonidos/dados.mp3");
   audio.play();
   setTimeout(() => {
     botonJ.disabled = false;
-  }, 2300)
+  }, 2000)
 }
 
-
+//Funcion que realiza la animación de los dados y devuelve la suma de los dos dados.
 
 const dice = document.getElementById('dice');
 const dice2 = document.getElementById('dice2');
@@ -104,9 +104,32 @@ function rollDice() {
 
 }
 
+//Creacion del objeto puchero 7
+var puchero7 = {
+  fichasRellenas:0
+};
+//Creacion de los pucheros 2-6 8-11
+
+//Array con los pucheros
+function crearPuchero(fichas) {
+  return {
+    fichasCapacidad: fichas,
+    fichasRellenas: 0
+
+  };
+} 
+const arrayPucheros = [];
+for (let i = 2; i <= 11; i++) {
+  if(i!=7){
+    let puchero = crearPuchero(i);
+    arrayPucheros.push(puchero);
+  }
+
+}
   //---------------Función principal del juego que llama al resto de funciones-------------
   function Jugar(e) {
     e.preventDefault();
+    pintarPuntuacion();
     cambiarTurnoJugador(array[primerT].name)
     cambiarFichasJugador(array[primerT].fichasRecibidas)
     if(botonJ.innerHTML == "Tirar dados"){
@@ -115,20 +138,114 @@ function rollDice() {
       sonarDados(numeroDados)
 
       switch (numeroDados) {
-        case 1: case 2: case 3: case 4: case 5: case 6:
-          pintarCasilla(canvases[numeroDados-2], numeroDados, 1)
+         case 2:
+          arrayPucheros[0].fichasRellenas++;
+          pintarCasilla(canvases[numeroDados-2], numeroDados, arrayPucheros[0].fichasRellenas)
+          if(arrayPucheros[0].fichasRellenas == arrayPucheros[0].fichasCapacidad){
+            arrayPucheros[0].fichasRellenas = 0;
+            setTimeout(() => {
+              array[primerT].fichasObtenidas = array[primerT].fichasObtenidas + arrayPucheros[0].fichasCapacidad
+              pintarCasilla(canvases[numeroDados-2], numeroDados, arrayPucheros[0].fichasRellenas)
+            }, 1000)
+          }
           break;
+         case 3:
+          arrayPucheros[1].fichasRellenas++;
+          pintarCasilla(canvases[numeroDados-2], numeroDados, arrayPucheros[1].fichasRellenas)
+          if(arrayPucheros[1].fichasRellenas == arrayPucheros[1].fichasCapacidad){
+            arrayPucheros[1].fichasRellenas = 0;
+            setTimeout(() => {
+              array[primerT].fichasObtenidas = array[primerT].fichasObtenidas + arrayPucheros[1].fichasCapacidad
+              pintarCasilla(canvases[numeroDados-2], numeroDados, arrayPucheros[1].fichasRellenas)
+            }, 1000)
+          }
+         break;
+         case 4:
+                    arrayPucheros[2].fichasRellenas++;
+          pintarCasilla(canvases[numeroDados-2], numeroDados, arrayPucheros[2].fichasRellenas)
+          if(arrayPucheros[2].fichasRellenas == arrayPucheros[2].fichasCapacidad){
+            arrayPucheros[2].fichasRellenas = 0;
+            setTimeout(() => {
+              array[primerT].fichasObtenidas = array[primerT].fichasObtenidas + arrayPucheros[2].fichasCapacidad
+              pintarCasilla(canvases[numeroDados-2], numeroDados, arrayPucheros[2].fichasRellenas)
+            }, 1000)
+          }
+          break;
+         case 5:
+                    arrayPucheros[3].fichasRellenas++;
+          pintarCasilla(canvases[numeroDados-2], numeroDados, arrayPucheros[3].fichasRellenas)
+          if(arrayPucheros[3].fichasRellenas == arrayPucheros[3].fichasCapacidad){
+            arrayPucheros[3].fichasRellenas = 0;
+            setTimeout(() => {
+              array[primerT].fichasObtenidas = array[primerT].fichasObtenidas + arrayPucheros[3].fichasCapacidad
+              pintarCasilla(canvases[numeroDados-2], numeroDados, arrayPucheros[3].fichasRellenas)
+            }, 1000)
+          }
+         break;
+         case 6:
+                    arrayPucheros[4].fichasRellenas++;
+          pintarCasilla(canvases[numeroDados-2], numeroDados, arrayPucheros[4].fichasRellenas)
+          if(arrayPucheros[4].fichasRellenas == arrayPucheros[4].fichasCapacidad){
+            arrayPucheros[4].fichasRellenas = 0;
+            setTimeout(() => {
+              array[primerT].fichasObtenidas = array[primerT].fichasObtenidas + arrayPucheros[4].fichasCapacidad
+              pintarCasilla(canvases[numeroDados-2], numeroDados, arrayPucheros[4].fichasRellenas)
+            }, 1000)
+          }
+         break;
         case 7:
-   
+          fichasBote++;
+        bote.innerHTML = "Hay " + fichasBote + " fichas en el puchero";
 
           break;  
-          case 8: case 9: case 10: case 11:
-          pintarCasilla(canvases[numeroDados-3], numeroDados, 1)
-
+          case 8:
+                     arrayPucheros[5].fichasRellenas++;
+          pintarCasilla(canvases[numeroDados-3], numeroDados, arrayPucheros[5].fichasRellenas)
+          if(arrayPucheros[5].fichasRellenas == arrayPucheros[5].fichasCapacidad){
+            arrayPucheros[5].fichasRellenas = 0;
+            setTimeout(() => {
+              array[primerT].fichasObtenidas = array[primerT].fichasObtenidas + arrayPucheros[5].fichasCapacidad
+              pintarCasilla(canvases[numeroDados-2], numeroDados, arrayPucheros[5].fichasRellenas)
+            }, 1000)
+          }
+          break;
+          case 9:
+                     arrayPucheros[6].fichasRellenas++;
+          pintarCasilla(canvases[numeroDados-3], numeroDados, arrayPucheros[6].fichasRellenas)
+          if(arrayPucheros[6].fichasRellenas == arrayPucheros[6].fichasCapacidad){
+            arrayPucheros[6].fichasRellenas = 0;
+            setTimeout(() => {
+              array[primerT].fichasObtenidas = array[primerT].fichasObtenidas + arrayPucheros[6].fichasCapacidad
+              pintarCasilla(canvases[numeroDados-2], numeroDados, arrayPucheros[6].fichasRellenas)
+            }, 1000)
+          }
+          break;
+          case 10:
+                     arrayPucheros[7].fichasRellenas++;
+          pintarCasilla(canvases[numeroDados-3], numeroDados, arrayPucheros[7].fichasRellenas)
+          if(arrayPucheros[7].fichasRellenas == arrayPucheros[7].fichasCapacidad){
+            arrayPucheros[7].fichasRellenas = 0;
+            setTimeout(() => {
+              array[primerT].fichasObtenidas = array[primerT].fichasObtenidas + arrayPucheros[7].fichasCapacidad
+              pintarCasilla(canvases[numeroDados-2], numeroDados, arrayPucheros[7].fichasRellenas)
+            }, 1000)
+          }
+          break;
+          case 11:
+                     arrayPucheros[8].fichasRellenas++;
+          pintarCasilla(canvases[numeroDados-3], numeroDados, arrayPucheros[8].fichasRellenas)
+          if(arrayPucheros[8].fichasRellenas == arrayPucheros[8].fichasCapacidad){
+            arrayPucheros[8].fichasRellenas = 0;
+            setTimeout(() => {
+              array[primerT].fichasObtenidas = array[primerT].fichasObtenidas + arrayPucheros[8].fichasCapacidad
+              pintarCasilla(canvases[numeroDados-2], numeroDados, arrayPucheros[8].fichasRellenas)
+            }, 1000)
+          }
           break;
         default:
-       
-
+          array[primerT].fichasObtenidas = array[primerT].fichasObtenidas + fichasBote
+        fichasBote = 0;
+        bote.innerHTML = "Hay " + fichasBote + " fichas en el puchero";
           break;
       }
       array[primerT].fichasRecibidas--;
@@ -137,6 +254,7 @@ function rollDice() {
         primerT = 0;
       }
     }
+    pintarPuntuacion();
     cambiarTurnoJugador(array[primerT].name)
     cambiarFichasJugador(array[primerT].fichasRecibidas)
     cambiarTextoBoton();
