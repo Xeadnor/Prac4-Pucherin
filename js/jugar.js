@@ -41,15 +41,29 @@ for (let i = 1; i <= jugadores.value; i++) {
   document.getElementById("opciones").style.display="none" 
   document.getElementById("grafico").style.display="block" 
 
+  //Funcion que se encarga de pintar los jugadores ordenados por puntos
   function pintarPuntuacion() {
+  let copyOfArray = [...array]
+  copyOfArray.sort( compare );
       var text = "";
   for (let i = 0; i < jugadores.value; i++) {
-    text += ("<div class='row justify-content-center'><div class='col-3 border'>" + array[i].name  + "</div><div class='col-3 border'> Fichas: " + array[i].fichasObtenidas + "</div> </div>")    + "<br>";
+    text += ("<div class='row justify-content-center'><div class='col-3 border'>" + copyOfArray[i].name  + "</div><div class='col-3 border'> Fichas: " + copyOfArray[i].fichasObtenidas + "</div> </div>")    + "<br>";
     
   }
-
+  console.log(copyOfArray);
   document.getElementById("listajugadores").innerHTML= text;
   }
+  //Funcion compare para la funcion pintarPuntuacion()
+  function compare( a, b ) {
+    if ( a.fichasObtenidas < b.fichasObtenidas ){
+      return 1;
+    }
+    if ( a.fichasObtenidas > b.fichasObtenidas ){
+      return -1;
+    }
+    return 0;
+  }
+  
 
 
   //Cambiar boton a tirar dados:
@@ -83,7 +97,7 @@ function sonarDados(numeroDados) {
   const audio = new Audio("sonidos/dados.mp3");
   audio.play();
   setTimeout(() => {
-    botonJ.disabled = false;
+  botonJ.disabled = false;
   }, 2000)
 }
 
@@ -129,10 +143,10 @@ for (let i = 2; i <= 11; i++) {
   //---------------Función principal del juego que llama al resto de funciones-------------
   function Jugar(e) {
     e.preventDefault();
-    pintarPuntuacion();
     cambiarTurnoJugador(array[primerT].name)
     cambiarFichasJugador(array[primerT].fichasRecibidas)
     if(botonJ.innerHTML == "Tirar dados"){
+      pintarPuntuacion();
       botonJ.disabled = true;
       var numeroDados = rollDice();
       sonarDados(numeroDados)
@@ -205,7 +219,7 @@ for (let i = 2; i <= 11; i++) {
             arrayPucheros[5].fichasRellenas = 0;
             setTimeout(() => {
               array[primerT].fichasObtenidas = array[primerT].fichasObtenidas + arrayPucheros[5].fichasCapacidad
-              pintarCasilla(canvases[numeroDados-2], numeroDados, arrayPucheros[5].fichasRellenas)
+              pintarCasilla(canvases[numeroDados-3], numeroDados, arrayPucheros[5].fichasRellenas)
             }, 1000)
           }
           break;
@@ -216,7 +230,7 @@ for (let i = 2; i <= 11; i++) {
             arrayPucheros[6].fichasRellenas = 0;
             setTimeout(() => {
               array[primerT].fichasObtenidas = array[primerT].fichasObtenidas + arrayPucheros[6].fichasCapacidad
-              pintarCasilla(canvases[numeroDados-2], numeroDados, arrayPucheros[6].fichasRellenas)
+              pintarCasilla(canvases[numeroDados-3], numeroDados, arrayPucheros[6].fichasRellenas)
             }, 1000)
           }
           break;
@@ -227,7 +241,7 @@ for (let i = 2; i <= 11; i++) {
             arrayPucheros[7].fichasRellenas = 0;
             setTimeout(() => {
               array[primerT].fichasObtenidas = array[primerT].fichasObtenidas + arrayPucheros[7].fichasCapacidad
-              pintarCasilla(canvases[numeroDados-2], numeroDados, arrayPucheros[7].fichasRellenas)
+              pintarCasilla(canvases[numeroDados-3], numeroDados, arrayPucheros[7].fichasRellenas)
             }, 1000)
           }
           break;
@@ -238,7 +252,7 @@ for (let i = 2; i <= 11; i++) {
             arrayPucheros[8].fichasRellenas = 0;
             setTimeout(() => {
               array[primerT].fichasObtenidas = array[primerT].fichasObtenidas + arrayPucheros[8].fichasCapacidad
-              pintarCasilla(canvases[numeroDados-2], numeroDados, arrayPucheros[8].fichasRellenas)
+              pintarCasilla(canvases[numeroDados-3], numeroDados, arrayPucheros[8].fichasRellenas)
             }, 1000)
           }
           break;
@@ -248,20 +262,25 @@ for (let i = 2; i <= 11; i++) {
         bote.innerHTML = "Hay " + fichasBote + " fichas en el puchero";
           break;
       }
-      array[primerT].fichasRecibidas--;
-      primerT++;
-      if(primerT == jugadores.value){
-        primerT = 0;
-      }
+      setTimeout(() => {
+        array[primerT].fichasRecibidas--;
+        primerT++;
+        if(primerT == jugadores.value){
+          primerT = 0;
+        }
+      }, 1100)
     }
-    pintarPuntuacion();
-    cambiarTurnoJugador(array[primerT].name)
-    cambiarFichasJugador(array[primerT].fichasRecibidas)
-    cambiarTextoBoton();
+    setTimeout(() => {
+      console.log(array);
+      console.log("--");
+      cambiarTurnoJugador(array[primerT].name)
+      cambiarFichasJugador(array[primerT].fichasRecibidas)
+      cambiarTextoBoton();
+    }, 1200)
+
     
     
   }
-
 
 }
 
