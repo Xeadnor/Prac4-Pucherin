@@ -15,10 +15,8 @@ function grafico(e) {
   var fichasBote = 0;
   e.preventDefault();
   var primerT = (primerTurno()-1);
-  var ultimoTurno = primerT-1
-  if(ultimoTurno == -1){
-    ultimoTurno = (jugadores.value - 1);
-  }
+  var ultimoTurno = primerT
+
   function crearJugador(name,fichas) {
     return {
       name: name,
