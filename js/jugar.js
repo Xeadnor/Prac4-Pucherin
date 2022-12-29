@@ -15,6 +15,10 @@ function grafico(e) {
   var fichasBote = 0;
   e.preventDefault();
   var primerT = (primerTurno()-1);
+  var ultimoTurno = primerT-1
+  if(ultimoTurno == -1){
+    ultimoTurno = (jugadores.value - 1);
+  }
   function crearJugador(name,fichas) {
     return {
       name: name,
@@ -52,6 +56,14 @@ for (let i = 1; i <= jugadores.value; i++) {
   }
   console.log(copyOfArray);
   document.getElementById("listajugadores").innerHTML= text;
+  }
+  function ElegirGanador(){
+    let arrayWiner = [...array]
+  arrayWiner.sort( compare );
+  document.getElementById("Ganador").innerHTML = "El ganador es : " + arrayWiner[0].name;
+
+  //NO COMPROBAMOS EMPATES ENTRE PUNTOS
+
   }
   //Funcion compare para la funcion pintarPuntuacion()
   function compare( a, b ) {
@@ -97,7 +109,7 @@ function sonarDados(numeroDados) {
   const audio = new Audio("sonidos/dados.mp3");
   audio.play();
   setTimeout(() => {
-  botonJ.disabled = false;
+  //botonJ.disabled = false;
   }, 2000)
 }
 
@@ -140,6 +152,37 @@ for (let i = 2; i <= 11; i++) {
   }
 
 }
+
+//Funcion que resetea el juego
+function resetGame(){
+  for (let i = 0; i < array.length; i++) {
+    array[i].fichasRecibidas = fichasTotales;
+    array[i].fichasObtenidas = 0;
+  }
+  for (let i = 0; i < arrayPucheros.length; i++) {
+    arrayPucheros[i].fichasRellenas = 0;
+  }
+  fichasBote = 0;
+  pintarPuntuacion();
+
+  //Resetar fichas
+  pintarCasilla(canvases[0], 2, 0)
+  pintarCasilla(canvases[1], 3, 0)
+  pintarCasilla(canvases[2], 4, 0)
+  pintarCasilla(canvases[3], 5, 0)
+  pintarCasilla(canvases[4], 6, 0)
+  pintarCasilla(canvases[5], 8, 0)
+  pintarCasilla(canvases[6], 9, 0)
+  pintarCasilla(canvases[7], 10, 0)
+  pintarCasilla(canvases[8], 11, 0)
+  bote.innerHTML = "Hay " + fichasBote + " fichas en el puchero";
+
+  //resetear botes
+  botonJ.innerHTML = "Tirar dados"
+  document.getElementById("Ganador").innerHTML = " ";
+
+  
+}
   //---------------Función principal del juego que llama al resto de funciones-------------
   function Jugar(e) {
     e.preventDefault();
@@ -147,7 +190,7 @@ for (let i = 2; i <= 11; i++) {
     cambiarFichasJugador(array[primerT].fichasRecibidas)
     if(botonJ.innerHTML == "Tirar dados"){
       pintarPuntuacion();
-      botonJ.disabled = true;
+      //botonJ.disabled = true;
       var numeroDados = rollDice();
       sonarDados(numeroDados)
 
@@ -270,16 +313,22 @@ for (let i = 2; i <= 11; i++) {
         }
       }, 1100)
     }
-    setTimeout(() => {
-      console.log(array);
-      console.log("--");
-      cambiarTurnoJugador(array[primerT].name)
-      cambiarFichasJugador(array[primerT].fichasRecibidas)
-      cambiarTextoBoton();
-    }, 1200)
-
+   if(botonJ.innerHTML == "Volver a jugar"){
+    resetGame();
+   }
+      if(array[ultimoTurno].fichasRecibidas == 0){
+      botonJ.innerHTML = "Volver a jugar";
+      ElegirGanador();
+    }
+    if(botonJ.innerHTML != "Volver a jugar"){
+      setTimeout(() => {
+        cambiarTurnoJugador(array[primerT].name)
+        cambiarFichasJugador(array[primerT].fichasRecibidas)
+        cambiarTextoBoton();
+      }, 1200) 
+    }
     
-    
+ 
   }
 
 }
