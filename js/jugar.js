@@ -26,7 +26,7 @@ function grafico(e) {
     };
   }
 if(valorFicha[0].checked){
-  fichasTotales = 30;
+  fichasTotales = 10;
 }else if (valorFicha[1].checked) {
   fichasTotales = 40;
 }else if (valorFicha[2].checked) {
@@ -107,7 +107,7 @@ function sonarDados(numeroDados) {
   const audio = new Audio("sonidos/dados.mp3");
   audio.play();
   setTimeout(() => {
-  //botonJ.disabled = false;
+  botonJ.disabled = false;
   }, 2000)
 }
 
@@ -188,7 +188,7 @@ function resetGame(){
     cambiarFichasJugador(array[primerT].fichasRecibidas)
     if(botonJ.innerHTML == "Tirar dados"){
       pintarPuntuacion();
-      //botonJ.disabled = true;
+      botonJ.disabled = true;
       var numeroDados = rollDice();
       sonarDados(numeroDados)
 
