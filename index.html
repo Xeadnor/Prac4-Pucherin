@@ -20,36 +20,76 @@
         </div>
         <div class="row justify-content-center">
             <div class="col-3">
-                <form id="form">
-                <label for="jugadores">Jugadores:</label></br>
-                <input type="number" id="jugadores" name="jugadores" placeholder="De 2 a 6 jugadores"max="6" min="2" required></br>
+             <form id="form">
+                <label for="jugadores">Número de jugadores:</label></br>
+                <input type="number" id="jugadores" name="jugadores" placeholder="De 2 a 6 jugadores"max="6" min="2" required style="width :160px;"></br>
                 <label for="fichas">Fichas por cada jugador:</label></br>
                 <input type="radio" name="fichas" id="fichas" value="30" required>30
                 <input type="radio" name="fichas" id="fichas" value="40" required>40
                 <input type="radio" name="fichas" id="fichas" value="50" required>50</br>
                 <input type="submit">
-              </form>
+             </form>
             </div>
               
         </div>
     
-      </div>
+    </div>
     
-    
-    
+        
     <div class="container-fluid p-0" id="grafico" style="display:none">
         <div class="row col-12 m-0 p-0">
             <div class="col-7 p-0">
-                        <div id="tablero" class="box"><div class="border col-2 bg-light" id="bote">Hay 0 fichas en el puchero</div>
-        </div>
+                <div id="tablero" class="box">
+                    <div class="border col-2 bg-light" id="bote">Hay 0 fichas en el puchero</div>
+                </div>
             </div>
+   
+
             <div class="col-5 bg-info p-0">
                 <div class="row col-12 justify-content-center mt-5">
-                    <div class="col-4 border" id="turno">Turno del jugador:</div></div>
-                <div class="row col-12 justify-content-around mt-5">
-                    <div class="col-4 border d-flex" id="nDados">
+                    <div class="col-4 border" id="turno">Turno del jugador:</div>
+                </div>
 
-                        <div id="dice" data-side="1">
+                <div class="row col-12 justify-content-around mt-5">
+                        <div class="col-4 border d-flex" id="nDados">
+
+                            <div id="dice" data-side="1">
+                                <div class="sides side-1">
+                                    <span class="dot dot-1"></span>
+                                </div>
+                                <div class="sides side-2">
+                                    <span class="dot dot-1"></span>
+                                    <span class="dot dot-2"></span>
+                                </div>
+                                <div class="sides side-3">
+                                    <span class="dot dot-1"></span>
+                                    <span class="dot dot-2"></span>  
+                                    <span class="dot dot-3"></span>
+                                </div>
+                                <div class="sides side-4">
+                                    <span class="dot dot-1"></span>
+                                    <span class="dot dot-2"></span>  
+                                    <span class="dot dot-3"></span>
+                                    <span class="dot dot-4"></span>
+                                </div>
+                                <div class="sides side-5">
+                                    <span class="dot dot-1"></span>
+                                    <span class="dot dot-2"></span>  
+                                    <span class="dot dot-3"></span>
+                                    <span class="dot dot-4"></span>
+                                    <span class="dot dot-5"></span>
+                                </div>
+                                <div class="sides side-6">
+                                    <span class="dot dot-1"></span>
+                                    <span class="dot dot-2"></span>  
+                                    <span class="dot dot-3"></span>
+                                    <span class="dot dot-4"></span>
+                                    <span class="dot dot-5"></span>
+                                    <span class="dot dot-6"></span>
+                                </div>
+                            </div>
+                            
+                            <div id="dice2" data-side="1">
                             <div class="sides side-1">
                                 <span class="dot dot-1"></span>
                             </div>
@@ -83,69 +123,33 @@
                                 <span class="dot dot-5"></span>
                                 <span class="dot dot-6"></span>
                             </div>
-                        </div>
+                            </div>
                         
-                        <div id="dice2" data-side="1">
-                          <div class="sides side-1">
-                              <span class="dot dot-1"></span>
-                          </div>
-                          <div class="sides side-2">
-                              <span class="dot dot-1"></span>
-                              <span class="dot dot-2"></span>
-                          </div>
-                          <div class="sides side-3">
-                              <span class="dot dot-1"></span>
-                              <span class="dot dot-2"></span>  
-                              <span class="dot dot-3"></span>
-                          </div>
-                          <div class="sides side-4">
-                              <span class="dot dot-1"></span>
-                              <span class="dot dot-2"></span>  
-                              <span class="dot dot-3"></span>
-                              <span class="dot dot-4"></span>
-                          </div>
-                          <div class="sides side-5">
-                              <span class="dot dot-1"></span>
-                              <span class="dot dot-2"></span>  
-                              <span class="dot dot-3"></span>
-                              <span class="dot dot-4"></span>
-                              <span class="dot dot-5"></span>
-                          </div>
-                          <div class="sides side-6">
-                              <span class="dot dot-1"></span>
-                              <span class="dot dot-2"></span>  
-                              <span class="dot dot-3"></span>
-                              <span class="dot dot-4"></span>
-                              <span class="dot dot-5"></span>
-                              <span class="dot dot-6"></span>
-                          </div>
-                      </div>
+                        </div>
 
+                
+                        <div class="col-3 border" id="fichasR">Fichas que quedan</div>
+                </div>
 
-
-
-
-
+                    <div class="row col-12  justify-content-center mt-5" id="listajugadores"> </div>
+                
+                    <div class="row col-12  justify-content-center mt-5">
+                        <div class="col-3 "><button id="botonJ">Empezar a jugar</button> </div> 
                     </div>
-                    <div class="col-3 border" id="fichasR">Fichas Que quedan</div>
-                </div>
-                <div class="row col-12  justify-content-center mt-5" id="listajugadores">
-
-                </div>
-            
-              
-                <div class="row col-12  justify-content-center mt-5">
-                    <div class="col-3 "><button id="botonJ">Empezar a jugar</button> </div> </div>
                     <div class="row col-12  justify-content-center mt-5" id="divGanador" style="display:flex">
-                        <div class="col-3 "><p id="Ganador"></p> </div> </div>
-                </div>
+                            <div class="col-3 "><p id="Ganador"></p> </div> 
+                    </div>
+
+                    <div class="row col-12  justify-content-center mt-5">
+                        <div class="col-3 "><button id="botonS">Salir del juego</button> </div> 
+                    </div>
+
+
             </div>
-
-
+        </div>
         </div>
 
-        
-      </div>
+    </div>
 
 </body>
 <script src="js/tablero.js"></script>

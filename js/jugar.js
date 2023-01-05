@@ -4,6 +4,7 @@ const boton = document.getElementById("mostrar");
 const form = document.getElementById("form");
 const valorFicha = document.getElementsByName('fichas');
 const botonJ = document.getElementById("botonJ");
+const botonS=document.getElementById("botonS")
 const nDados = document.getElementById("nDados");
 const turno = document.getElementById("turno");
 const bote = document.getElementById("bote");
@@ -25,14 +26,16 @@ function grafico(e) {
 
     };
   }
+
 if(valorFicha[0].checked){
-  fichasTotales = 10;
+  fichasTotales = 30;
 }else if (valorFicha[1].checked) {
   fichasTotales = 40;
 }else if (valorFicha[2].checked) {
   fichasTotales = 50;
 }
-  //array de jugadores que se rellena según el num selecionado
+
+//array de jugadores que se rellena según el num selecionado
 const array = [];
 for (let i = 1; i <= jugadores.value; i++) {
   let jugador = crearJugador("Jugador " + i,fichasTotales);
@@ -63,6 +66,7 @@ for (let i = 1; i <= jugadores.value; i++) {
   //NO COMPROBAMOS EMPATES ENTRE PUNTOS
 
   }
+
   //Funcion compare para la funcion pintarPuntuacion()
   function compare( a, b ) {
     if ( a.fichasObtenidas < b.fichasObtenidas ){
@@ -74,7 +78,17 @@ for (let i = 1; i <= jugadores.value; i++) {
     return 0;
   }
   
+  //Salir del juego
+  botonS.addEventListener("click",Volver)
+  
+  //función que vuelve a la pantalla de opciones
 
+  function Volver(){
+    document.getElementById("opciones").style.display="block" 
+    document.getElementById("grafico").style.display="none" 
+    resetGame();
+
+  }
 
   //Cambiar boton a tirar dados:
   botonJ.addEventListener("click",Jugar)
@@ -87,15 +101,16 @@ for (let i = 1; i <= jugadores.value; i++) {
   function cambiarTurnoJugador(jugador) {
     turno.innerHTML= "Turno del jugador: " + jugador;
   }
+
   function cambiarFichasJugador(fichas) {
     document.getElementById("fichasR").innerHTML = "Quedan por dar " + fichas + " fichas"
   }
 
   
-  //función que con un random saca la tirada de los dados
+ /* //función que con un random saca la tirada de los dados
   function tirarDados(){
     return Math.floor(Math.random() * (12 - 2 + 1) + 2)
-  }
+  } */
 
   //función que decide qué jugador empieza a jugar
   function primerTurno(){
@@ -186,6 +201,7 @@ function resetGame(){
     e.preventDefault();
     cambiarTurnoJugador(array[primerT].name)
     cambiarFichasJugador(array[primerT].fichasRecibidas)
+
     if(botonJ.innerHTML == "Tirar dados"){
       pintarPuntuacion();
       botonJ.disabled = true;
@@ -203,7 +219,8 @@ function resetGame(){
               pintarCasilla(canvases[numeroDados-2], numeroDados, arrayPucheros[0].fichasRellenas)
             }, 1000)
           }
-          break;
+         break;
+
          case 3:
           arrayPucheros[1].fichasRellenas++;
           pintarCasilla(canvases[numeroDados-2], numeroDados, arrayPucheros[1].fichasRellenas)
@@ -215,8 +232,9 @@ function resetGame(){
             }, 1000)
           }
          break;
+
          case 4:
-                    arrayPucheros[2].fichasRellenas++;
+          arrayPucheros[2].fichasRellenas++;
           pintarCasilla(canvases[numeroDados-2], numeroDados, arrayPucheros[2].fichasRellenas)
           if(arrayPucheros[2].fichasRellenas == arrayPucheros[2].fichasCapacidad){
             arrayPucheros[2].fichasRellenas = 0;
@@ -225,9 +243,10 @@ function resetGame(){
               pintarCasilla(canvases[numeroDados-2], numeroDados, arrayPucheros[2].fichasRellenas)
             }, 1000)
           }
-          break;
+         break;
+
          case 5:
-                    arrayPucheros[3].fichasRellenas++;
+          arrayPucheros[3].fichasRellenas++;
           pintarCasilla(canvases[numeroDados-2], numeroDados, arrayPucheros[3].fichasRellenas)
           if(arrayPucheros[3].fichasRellenas == arrayPucheros[3].fichasCapacidad){
             arrayPucheros[3].fichasRellenas = 0;
@@ -237,8 +256,9 @@ function resetGame(){
             }, 1000)
           }
          break;
+
          case 6:
-                    arrayPucheros[4].fichasRellenas++;
+          arrayPucheros[4].fichasRellenas++;
           pintarCasilla(canvases[numeroDados-2], numeroDados, arrayPucheros[4].fichasRellenas)
           if(arrayPucheros[4].fichasRellenas == arrayPucheros[4].fichasCapacidad){
             arrayPucheros[4].fichasRellenas = 0;
@@ -248,13 +268,15 @@ function resetGame(){
             }, 1000)
           }
          break;
-        case 7:
-          fichasBote++;
-        bote.innerHTML = "Hay " + fichasBote + " fichas en el puchero";
 
-          break;  
-          case 8:
-                     arrayPucheros[5].fichasRellenas++;
+         case 7:
+          fichasBote++;
+          bote.innerHTML = "Hay " + fichasBote + " fichas en el puchero";
+
+         break;  
+
+         case 8:
+          arrayPucheros[5].fichasRellenas++;
           pintarCasilla(canvases[numeroDados-3], numeroDados, arrayPucheros[5].fichasRellenas)
           if(arrayPucheros[5].fichasRellenas == arrayPucheros[5].fichasCapacidad){
             arrayPucheros[5].fichasRellenas = 0;
@@ -264,8 +286,9 @@ function resetGame(){
             }, 1000)
           }
           break;
+
           case 9:
-                     arrayPucheros[6].fichasRellenas++;
+          arrayPucheros[6].fichasRellenas++;
           pintarCasilla(canvases[numeroDados-3], numeroDados, arrayPucheros[6].fichasRellenas)
           if(arrayPucheros[6].fichasRellenas == arrayPucheros[6].fichasCapacidad){
             arrayPucheros[6].fichasRellenas = 0;
@@ -275,8 +298,9 @@ function resetGame(){
             }, 1000)
           }
           break;
+
           case 10:
-                     arrayPucheros[7].fichasRellenas++;
+          arrayPucheros[7].fichasRellenas++;
           pintarCasilla(canvases[numeroDados-3], numeroDados, arrayPucheros[7].fichasRellenas)
           if(arrayPucheros[7].fichasRellenas == arrayPucheros[7].fichasCapacidad){
             arrayPucheros[7].fichasRellenas = 0;
@@ -286,10 +310,11 @@ function resetGame(){
             }, 1000)
           }
           break;
+
           case 11:
-                     arrayPucheros[8].fichasRellenas++;
+          arrayPucheros[8].fichasRellenas++;
           pintarCasilla(canvases[numeroDados-3], numeroDados, arrayPucheros[8].fichasRellenas)
-          if(arrayPucheros[8].fichasRellenas == arrayPucheros[8].fichasCapacidad){
+          if(arrayPucheros[8].fichasRellenas == arrayPucheros[8].fichasCapacidad){ //hay que hacer que al vaciarse las fichas se las sume al contador del jugador
             arrayPucheros[8].fichasRellenas = 0;
             setTimeout(() => {
               array[primerT].fichasObtenidas = array[primerT].fichasObtenidas + arrayPucheros[8].fichasCapacidad
@@ -297,12 +322,15 @@ function resetGame(){
             }, 1000)
           }
           break;
-        default:
+          
+          //en caso de que salga el 12 todas las fichas del puchero se suman al marcador del jugador
+          default:
           array[primerT].fichasObtenidas = array[primerT].fichasObtenidas + fichasBote
-        fichasBote = 0;
-        bote.innerHTML = "Hay " + fichasBote + " fichas en el puchero";
+          fichasBote = 0;
+          bote.innerHTML = "Hay " + fichasBote + " fichas en el puchero";
           break;
-      }
+      } //fin switch
+
       setTimeout(() => {
         array[primerT].fichasRecibidas--;
         primerT++;
@@ -311,14 +339,17 @@ function resetGame(){
         }
       }, 1100)
     }
+
    if(botonJ.innerHTML == "Volver a jugar"){
     resetGame();
    }
-      if(array[ultimoTurno].fichasRecibidas == 0){
+
+   if(array[ultimoTurno].fichasRecibidas == 0){
       botonJ.innerHTML = "Volver a jugar";
       ElegirGanador();
-    }
-    if(botonJ.innerHTML != "Volver a jugar"){
+   }
+
+   if(botonJ.innerHTML != "Volver a jugar"){
       setTimeout(() => {
         cambiarTurnoJugador(array[primerT].name)
         cambiarFichasJugador(array[primerT].fichasRecibidas)
