@@ -61,7 +61,7 @@ for (let i = 1; i <= jugadores.value; i++) {
   function ElegirGanador(){
     let arrayWiner = [...array]
   arrayWiner.sort( compare );
-  document.getElementById("Ganador").innerHTML = "El ganador es : " + arrayWiner[0].name;
+  document.getElementById("Ganador").innerHTML = "El ganador es : " + arrayWiner[0].name;//TODO cambiar array[0 por un for que imprima todos los del array winner]
 
   //NO COMPROBAMOS EMPATES ENTRE PUNTOS
 
@@ -82,7 +82,6 @@ for (let i = 1; i <= jugadores.value; i++) {
   botonS.addEventListener("click",Volver)
   
   //función que vuelve a la pantalla de opciones
-
   function Volver(){
     document.getElementById("opciones").style.display="block" 
     document.getElementById("grafico").style.display="none" 
@@ -106,11 +105,6 @@ for (let i = 1; i <= jugadores.value; i++) {
     document.getElementById("fichasR").innerHTML = "Quedan por dar " + fichas + " fichas"
   }
 
-  
- /* //función que con un random saca la tirada de los dados
-  function tirarDados(){
-    return Math.floor(Math.random() * (12 - 2 + 1) + 2)
-  } */
 
   //función que decide qué jugador empieza a jugar
   function primerTurno(){
@@ -196,6 +190,32 @@ function resetGame(){
 
   
 }
+
+//Funcion que realiza el sonido al llevarse el bote del puchero
+function sonarBote() {
+  const audio = new Audio("sonidos/bote.mp3");
+  audio.play();
+}
+
+//Funcion que realiza el sonido al completar un puchero
+function sonarCompletado() {
+  const audio = new Audio("sonidos/coin.mp3");
+  audio.play();
+}
+
+//Funcion que realiza el sonido cuado sale un 7 y se añade una ficha al puchero
+function sonarPuchero() {
+  const audio = new Audio("sonidos/puchero.mp3");
+  audio.play();
+}
+
+//Funcion que realiza el sonido al finalizar la partida
+function sonarWin() {
+  const audio = new Audio("sonidos/aplauso.mp3");
+  audio.play();
+}
+
+
   //---------------Función principal del juego que llama al resto de funciones-------------
   function Jugar(e) {
     e.preventDefault();
@@ -214,6 +234,7 @@ function resetGame(){
           pintarCasilla(canvases[numeroDados-2], numeroDados, arrayPucheros[0].fichasRellenas)
           if(arrayPucheros[0].fichasRellenas == arrayPucheros[0].fichasCapacidad){
             arrayPucheros[0].fichasRellenas = 0;
+            sonarCompletado();
             setTimeout(() => {
               array[primerT].fichasObtenidas = array[primerT].fichasObtenidas + arrayPucheros[0].fichasCapacidad
               pintarCasilla(canvases[numeroDados-2], numeroDados, arrayPucheros[0].fichasRellenas)
@@ -226,6 +247,7 @@ function resetGame(){
           pintarCasilla(canvases[numeroDados-2], numeroDados, arrayPucheros[1].fichasRellenas)
           if(arrayPucheros[1].fichasRellenas == arrayPucheros[1].fichasCapacidad){
             arrayPucheros[1].fichasRellenas = 0;
+            sonarCompletado();
             setTimeout(() => {
               array[primerT].fichasObtenidas = array[primerT].fichasObtenidas + arrayPucheros[1].fichasCapacidad
               pintarCasilla(canvases[numeroDados-2], numeroDados, arrayPucheros[1].fichasRellenas)
@@ -238,6 +260,7 @@ function resetGame(){
           pintarCasilla(canvases[numeroDados-2], numeroDados, arrayPucheros[2].fichasRellenas)
           if(arrayPucheros[2].fichasRellenas == arrayPucheros[2].fichasCapacidad){
             arrayPucheros[2].fichasRellenas = 0;
+            sonarCompletado();
             setTimeout(() => {
               array[primerT].fichasObtenidas = array[primerT].fichasObtenidas + arrayPucheros[2].fichasCapacidad
               pintarCasilla(canvases[numeroDados-2], numeroDados, arrayPucheros[2].fichasRellenas)
@@ -250,6 +273,7 @@ function resetGame(){
           pintarCasilla(canvases[numeroDados-2], numeroDados, arrayPucheros[3].fichasRellenas)
           if(arrayPucheros[3].fichasRellenas == arrayPucheros[3].fichasCapacidad){
             arrayPucheros[3].fichasRellenas = 0;
+            sonarCompletado();
             setTimeout(() => {
               array[primerT].fichasObtenidas = array[primerT].fichasObtenidas + arrayPucheros[3].fichasCapacidad
               pintarCasilla(canvases[numeroDados-2], numeroDados, arrayPucheros[3].fichasRellenas)
@@ -262,6 +286,7 @@ function resetGame(){
           pintarCasilla(canvases[numeroDados-2], numeroDados, arrayPucheros[4].fichasRellenas)
           if(arrayPucheros[4].fichasRellenas == arrayPucheros[4].fichasCapacidad){
             arrayPucheros[4].fichasRellenas = 0;
+            sonarCompletado();
             setTimeout(() => {
               array[primerT].fichasObtenidas = array[primerT].fichasObtenidas + arrayPucheros[4].fichasCapacidad
               pintarCasilla(canvases[numeroDados-2], numeroDados, arrayPucheros[4].fichasRellenas)
@@ -272,6 +297,7 @@ function resetGame(){
          case 7:
           fichasBote++;
           bote.innerHTML = "Hay " + fichasBote + " fichas en el puchero";
+          sonarPuchero();
 
          break;  
 
@@ -280,6 +306,7 @@ function resetGame(){
           pintarCasilla(canvases[numeroDados-3], numeroDados, arrayPucheros[5].fichasRellenas)
           if(arrayPucheros[5].fichasRellenas == arrayPucheros[5].fichasCapacidad){
             arrayPucheros[5].fichasRellenas = 0;
+            sonarCompletado();
             setTimeout(() => {
               array[primerT].fichasObtenidas = array[primerT].fichasObtenidas + arrayPucheros[5].fichasCapacidad
               pintarCasilla(canvases[numeroDados-3], numeroDados, arrayPucheros[5].fichasRellenas)
@@ -292,6 +319,7 @@ function resetGame(){
           pintarCasilla(canvases[numeroDados-3], numeroDados, arrayPucheros[6].fichasRellenas)
           if(arrayPucheros[6].fichasRellenas == arrayPucheros[6].fichasCapacidad){
             arrayPucheros[6].fichasRellenas = 0;
+            sonarCompletado();
             setTimeout(() => {
               array[primerT].fichasObtenidas = array[primerT].fichasObtenidas + arrayPucheros[6].fichasCapacidad
               pintarCasilla(canvases[numeroDados-3], numeroDados, arrayPucheros[6].fichasRellenas)
@@ -304,6 +332,7 @@ function resetGame(){
           pintarCasilla(canvases[numeroDados-3], numeroDados, arrayPucheros[7].fichasRellenas)
           if(arrayPucheros[7].fichasRellenas == arrayPucheros[7].fichasCapacidad){
             arrayPucheros[7].fichasRellenas = 0;
+            sonarCompletado();
             setTimeout(() => {
               array[primerT].fichasObtenidas = array[primerT].fichasObtenidas + arrayPucheros[7].fichasCapacidad
               pintarCasilla(canvases[numeroDados-3], numeroDados, arrayPucheros[7].fichasRellenas)
@@ -314,8 +343,9 @@ function resetGame(){
           case 11:
           arrayPucheros[8].fichasRellenas++;
           pintarCasilla(canvases[numeroDados-3], numeroDados, arrayPucheros[8].fichasRellenas)
-          if(arrayPucheros[8].fichasRellenas == arrayPucheros[8].fichasCapacidad){ //hay que hacer que al vaciarse las fichas se las sume al contador del jugador
+          if(arrayPucheros[8].fichasRellenas == arrayPucheros[8].fichasCapacidad){ 
             arrayPucheros[8].fichasRellenas = 0;
+            sonarCompletado();
             setTimeout(() => {
               array[primerT].fichasObtenidas = array[primerT].fichasObtenidas + arrayPucheros[8].fichasCapacidad
               pintarCasilla(canvases[numeroDados-3], numeroDados, arrayPucheros[8].fichasRellenas)
@@ -327,6 +357,7 @@ function resetGame(){
           default:
           array[primerT].fichasObtenidas = array[primerT].fichasObtenidas + fichasBote
           fichasBote = 0;
+          sonarBote();
           bote.innerHTML = "Hay " + fichasBote + " fichas en el puchero";
           break;
       } //fin switch
@@ -347,6 +378,7 @@ function resetGame(){
    if(array[ultimoTurno].fichasRecibidas == 0){
       botonJ.innerHTML = "Volver a jugar";
       ElegirGanador();
+      sonarWin();
    }
 
    if(botonJ.innerHTML != "Volver a jugar"){

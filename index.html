@@ -13,16 +13,16 @@
     
     <div class="container-fluid" id="opciones">
         <div class="row justify-content-center">
-            <div class="col-3">
-              <h2>PUCHERIN</h2>
+            <div class="col-5 col-md-3">
+              <h1>PUCHERIN</h1>
               <p>Antes de jugar selecciona las caracteristicas que quieres que tenga la partida</p>
             </div>           
         </div>
         <div class="row justify-content-center">
-            <div class="col-3">
+            <div class="col-5 col-md-3">
              <form id="form">
                 <label for="jugadores">Número de jugadores:</label></br>
-                <input type="number" id="jugadores" name="jugadores" placeholder="De 2 a 6 jugadores"max="6" min="2" required style="width :160px;"></br>
+                <input type="number" id="jugadores" name="jugadores" placeholder="De 2 a 6 jugadores"max="6" min="2" required style="width :155px;"></br>
                 <label for="fichas">Fichas por cada jugador:</label></br>
                 <input type="radio" name="fichas" id="fichas" value="30" required>30
                 <input type="radio" name="fichas" id="fichas" value="40" required>40
@@ -38,14 +38,14 @@
         
     <div class="container-fluid p-0" id="grafico" style="display:none">
         <div class="row col-12 m-0 p-0">
-            <div class="col-7 p-0">
+            <div class="col-12 col-md-7 p-0">
                 <div id="tablero" class="box">
                     <div class="border col-2 bg-light" id="bote">Hay 0 fichas en el puchero</div>
                 </div>
             </div>
    
 
-            <div class="col-5 bg-info p-0">
+            <div class="col-12 col-md-5 bg-info p-0">
                 <div class="row col-12 justify-content-center mt-5">
                     <div class="col-4 border" id="turno">Turno del jugador:</div>
                 </div>
