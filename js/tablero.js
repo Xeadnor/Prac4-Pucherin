@@ -20,6 +20,7 @@ for (var i = 0; i < casillas; i++) {
   // Establecer el ancho y alto del canvas en 50 (cada canvas será de 50 x 50)
   canvas.width = 120;
   canvas.height = 120;
+  canvas.id ="canvas" + [i];
   // Añadir el canvas a la página
   container.appendChild(canvas);
   
