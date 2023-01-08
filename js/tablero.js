@@ -110,7 +110,7 @@ function pintarCasilla(canvas, fichas, num){
     
      ctx.fillStyle = 'white';
     // Establecer la fuente para el texto
-     ctx.font = '24px sans-serif';
+     ctx.font = '35px sans-serif';
      // Dibujar el número en el canvas usando el método fillText()
      x = canvas.width / 2 - ctx.measureText(fichas).width / 2;
      y = canvas.height / 2 + 10;
@@ -139,7 +139,7 @@ function pintarPuchero(canvas){
     
      ctx.fillStyle = 'white';
     // Establecer la fuente para el texto
-     ctx.font = '24px sans-serif';
+     ctx.font = '35px sans-serif';
      // Dibujar el número en el canvas usando el método fillText()
      x = canvas.width / 2 - ctx.measureText(7).width / 2;
      y = canvas.height / 2 + 10;
