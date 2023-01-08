@@ -5,8 +5,8 @@ const casillas = 9;
 // crear puchero
  var puchero = document.createElement('canvas');
  puchero.classList.add('puchero');
- puchero.width = 120;
- puchero.height = 120;
+/* puchero.width = 120;
+ puchero.height = 120;*/
  container.appendChild(puchero);
  pintarPuchero(puchero);
 //Crear elementos canvas para las casillas -->
@@ -18,8 +18,8 @@ for (var i = 0; i < casillas; i++) {
   var canvas = document.createElement('canvas');
   canvas.classList.add('casilla');
   // Establecer el ancho y alto del canvas en 50 (cada canvas será de 50 x 50)
-  canvas.width = 120;
-  canvas.height = 120;
+  /*canvas.width = 120;
+  canvas.height = 120;*/
   canvas.id ="canvas" + [i];
   // Añadir el canvas a la página
   container.appendChild(canvas);
@@ -28,34 +28,73 @@ for (var i = 0; i < casillas; i++) {
 
 // Obtener una referencia a todos los elementos canvas en la página
 var canvases = document.querySelectorAll('.casilla');
+window.addEventListener("load",pintarElipse)
+window.addEventListener("resize",pintarElipse)
 
+function pintarElipse(){
+  // Dibujar una elipse en cada canvas y posicionarlos en una elipse de 
+  for (var i = 0; i < canvases.length; i++) {
+    // Obtener el contexto del canvas en 2D
+    var ctx = canvases[i].getContext('2d');
 
+    // Dibujar una elipse en el canvas
+    ctx.beginPath();  
+    
+    //ctx.ellipse(35, 35, 35, 35, 0, 0, 2 * Math.PI);
+    //ctx.stroke();
 
-// Dibujar una elipse en cada canvas y posicionarlos en una elipse de 
-for (var i = 0; i < canvases.length; i++) {
-  // Obtener el contexto del canvas en 2D
-  var ctx = canvases[i].getContext('2d');
-
-  // Dibujar una elipse en el canvas
-  ctx.beginPath();  
-  
-  //ctx.ellipse(35, 35, 35, 35, 0, 0, 2 * Math.PI);
-  //ctx.stroke();
-
-  // Posicionar el canvas en la elipse 
-  canvases[i].style.left = Math.cos(2 * Math.PI * i / casillas) * 300 + 355 - 25 + 'px';
-  canvases[i].style.top = Math.sin(2 * Math.PI * i / casillas) * 200 + 300  - 25  + 'px';
-  
-  if (i>4) pintarCasilla(canvases[i],i+3)
-  else pintarCasilla(canvases[i],i+2)
+    // Posicionar el canvas en la elipse 
+    
+        canvases[i].style.left = Math.cos(2 * Math.PI * i / casillas) * calcularElipseLeftA() + calcularElipseLeftB() - 25 + 'px';
+        canvases[i].style.top = Math.sin(2 * Math.PI * i / casillas) * 200 + calcularElipseTop()  - 25  + 'px';
+    
+    if (i>4) pintarCasilla(canvases[i],i+3)
+    else pintarCasilla(canvases[i],i+2)
+    
+  }
 }
 
+function calcularElipseLeftA(){ //ampliar la elipse o hacerla más redondeada
+  if(window.innerWidth>=1120){
+    return 300
+  }else if(window.innerWidth>=992){//para tamaño L, xl y xxl
+    return 200
+  }else if(window.innerWidth>=768){//para tamaño M
+    return 300
+  }else if(window.innerWidth>=576){//para tamaños s
+    return 200
+  }else{//para tamaños XS
+    return 118
+  }
+}
+function calcularElipseLeftB(){ //posicionar la elipse más hacia la izquierda o hacia la derecha
+  if(window.innerWidth>=992){//para tamaño L, xl y xxl
+    return 320
+  }else if(window.innerWidth>=768){//para tamaño M
+    return 380
+  }else if(window.innerWidth>=576){// para tamaños S
+    return 230
+  }else{//para tamaños XS
+    return 120
+  }
+}
 
+function calcularElipseTop(){
+  if(window.innerWidth>=1200){//para tamaños xl y xxl
+   return 300
+  }else if(window.innerWidth>=992){//para tamaño L
+    return 300
+  }else if(window.innerWidth>=768){//para tamaño M
+    return 700
+  }else{//para tamaños S y XS
+    return 700
+  }
+}
 
 function pintarCasilla(canvas, fichas, num){
   var ctx = canvas.getContext('2d');
   ctx.arc(canvas.width / 2, canvas.height / 2, 60, 0, 2 * Math.PI);
-  ctx.fillStyle = 'green';
+  ctx.fillStyle = 'teal';
   ctx.fill();
   for (var i = 0; i < fichas; i++) {
       // Calcular la posición en el círculo para cada ficha
@@ -65,7 +104,7 @@ function pintarCasilla(canvas, fichas, num){
       // Dibujar la ficha en la posición calculada
       ctx.beginPath();
       ctx.arc(x, y, 9, 0, 2 * Math.PI);
-      if (i < num ) ctx.fillStyle = 'red'
+      if (i < num ) ctx.fillStyle = 'orange'
          else ctx.fillStyle = 'white'
       ctx.fill();
     
@@ -83,18 +122,18 @@ function pintarCasilla(canvas, fichas, num){
 function pintarPuchero(canvas){
   var ctx = canvas.getContext('2d');
   ctx.arc(canvas.width / 2, canvas.height / 2, 60, 0, 2 * Math.PI);
-  ctx.fillStyle = 'red';
+  ctx.fillStyle = 'orange';
   ctx.fill();
   for (var i = 0; i < 4; i++) {
       // Calcular la posición en el círculo para cada ficha
-      var x = Math.cos(2 * Math.PI * i / 4) * 35 + canvas.width / 2;
-      var y = Math.sin(2 * Math.PI * i / 4) * 35 + canvas.height / 2;
+      var x = Math.cos(2 * Math.PI * i ) * 35 + canvas.width / 2;
+      var y = Math.sin(2 * Math.PI * i ) * 35 + canvas.height / 2;
 
       // Dibujar la ficha en la posición calculada
       ctx.beginPath();
       ctx.arc(x, y, 9, 0, 2 * Math.PI);
      
-      ctx.fillStyle = 'white'
+      ctx.fillStyle = 'orange'
       ctx.fill();
     
     

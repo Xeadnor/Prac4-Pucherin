@@ -27,24 +27,132 @@ html,body{
   
   .casilla {
     position: absolute;
+    width: 234px;
+    height: 130px;
    
   }
   
   .puchero {
     margin: 0;
     position: absolute;
-    left: 350.813px;
-    top: 280.442px;
+    left: 298.813px;
+    top: 270.442px;
+    width: 234px;
+    height: 130px;
   }
   
   #bote{
     margin: 0;
     position: absolute;
-      left: 320.813px;
-      top: 410.442px;
-      width:170px;
+      left: 341.813px;
+      top: 393.442px;
+      width:155px;
       height: 50px;
 
   }
+  .boton{
+    color: #0099CC;
+    background: transparent;
+    border: 2px solid #0099CC;
+    border-radius: 6px;
+    
+    color: white;
+    padding: 14px 30px;
+    text-align: center;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    text-decoration: none;
+    text-transform: uppercase;
+  }
+  .boton:hover {
+    background-color: #008CBA;
+    color: white;
+  }
+
   
+
+  @media (max-width: 991px) { /*para tamaños medianos*/
+
+    .box{
+      position: relative;
+      width:100%;
+      height:1000px;
+      background-color:grey;
+    }
+
+    .puchero {
+      margin: 0;
+      position: absolute;
+      left: 360.82px;
+      top: 678.442px;
+    }
+
+    #bote{
+      margin: 0;
+      position: absolute;
+        left: 401.82px;
+        top: 801.442px;
+    }
+  }
+
+  @media (max-width: 768px) { /* para tamaños pequeños de pantalla  */
+
+    .casilla {
+      position: absolute;
+      width: 194px;
+      height: 92px;
+     
+    }
+    
+    .puchero {
+      margin: 0;
+      position: absolute;
+      left: 216.82px;
+      top: 673.442px;
+      width: 194px;
+      height: 92px;
+    }
+
+    #bote{
+      margin: 0;
+      position: absolute;
+        left: 261.82px;
+        top: 763.442px;
+        width:101px;
+        height: 50px;
   
+    }
+  }
+
+  @media (max-width: 576px) { /* para tamaños pequeños de pantalla  */
+      
+    .casilla {
+      position: absolute;
+      width: 194px;
+      height: 92px;
+     
+    }
+
+    .puchero {
+      margin: 0;
+      position: absolute;
+      left: 73.82px;
+      top: 673.442px;
+      width: 194px;
+      height: 92px;
+    }
+
+    #bote{
+      margin: 0;
+      position: absolute;
+        left: 119.82px;
+        top: 763.442px;
+        width:101px;
+        height: 50px;
+  
+    }
+
+  }

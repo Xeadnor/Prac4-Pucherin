@@ -214,10 +214,16 @@ function sonarWin() {
   const audio = new Audio("sonidos/aplauso.mp3");
   audio.play();
 }
+//Funcion que realiza el sonido al empezar una la partida
+function sonarStart() {
+const audio = new Audio("sonidos/start.wav");
+audio.play();
+}
 
 
   //---------------Función principal del juego que llama al resto de funciones-------------
   function Jugar(e) {
+    
     e.preventDefault();
     cambiarTurnoJugador(array[primerT].name)
     cambiarFichasJugador(array[primerT].fichasRecibidas)
