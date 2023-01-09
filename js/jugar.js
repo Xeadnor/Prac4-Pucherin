@@ -53,7 +53,7 @@ for (let i = 1; i <= jugadores.value; i++) {
   copyOfArray.sort( compare );
       var text = "";
   for (let i = 0; i < jugadores.value; i++) {
-    text += ("<div class='row justify-content-center'><div class='col-3 border'>" + copyOfArray[i].name  + "</div><div class='col-3 border'> Fichas: " + copyOfArray[i].fichasObtenidas + "</div> </div>")    + "<br>";
+    text += ("<div class='row justify-content-center'><div class='col-3 border'>" + copyOfArray[i].name  + "</div><div class='col-3 border'> Fichas: " + copyOfArray[i].fichasRecibidas + "</div>" + "<div class='col-3 border'> Puntos: " + copyOfArray[i].fichasObtenidas + "</div>"  + "</div>");
     
   }
   document.getElementById("listajugadores").innerHTML= text;
@@ -373,15 +373,41 @@ audio.play();
       } //fin switch
 
       setTimeout(() => {
-        array[primerT].fichasRecibidas--;
+        if(numeroDados != 12){
+          array[primerT].fichasRecibidas--;
+        }
         primerT++;
         if(primerT == jugadores.value){
           primerT = 0;
         }
+        comprobarSiEs0();
+        console.log(array)
+        console.log("---")
+        console.log("Turno : " + primerT);
       }, 1100)
     }
 
-    
+    function comprobarSiEs0() {
+      let counter = 0;
+      for (let i = 0; i < jugadores.value; i++) {
+        if(array[i].fichasRecibidas > 0){
+          while (array[primerT].fichasRecibidas == 0) {
+            primerT++
+          }
+          return false;
+        }else if(array[i].fichasRecibidas == 0){
+          counter++;
+          console.log(counter);
+        }
+        if(counter == jugadores.value){
+          botonJ.innerHTML = "Tirar dados"
+          info.innerHTML = "Seguir tirando dados hasta vaciar los pucheros o sacar 12";
+        }
+
+      }
+    }
+
+
     //fin de juego ultimos turnos sin fichas por poner
     if(botonJ.innerHTML == "Tirar dados" && info.innerHTML == "Seguir tirando dados hasta vaciar los pucheros o sacar 12"){
       pintarPuntuacion();
@@ -451,7 +477,7 @@ audio.play();
         break;
 
         case 7:
-         fichasBote++;
+         
          bote.innerHTML = "Hay " + fichasBote + " fichas en el puchero";
          sonarPuchero();
 
@@ -504,12 +530,27 @@ audio.play();
           }, 1000)
          break;
          
-         //en caso de que salga el 12 todas las fichas del puchero se suman al marcador del jugador
+         //en caso de que salga el 12 todas las fichas del puchero y todas las fichas del tablero se suman al marcador del jugador
          default:
-         array[primerT].fichasObtenidas = array[primerT].fichasObtenidas + fichasBote
+          
+         
+
+          let fichasTablero = 0;
+
+         for (let i = 0; i < arrayPucheros.length; i++) {
+
+          fichasTablero += arrayPucheros[i].fichasRellenas
+          if(i < 5){
+            pintarCasilla(canvases[numeroDados-2], numeroDados, 0)
+          }else{
+          pintarCasilla(canvases[numeroDados-3], numeroDados, 0)}
+
+         }
+         array[primerT].fichasObtenidas = array[primerT].fichasObtenidas + fichasBote + fichasTablero
          fichasBote = 0;
-         sonarBote();
          bote.innerHTML = "Hay " + fichasBote + " fichas en el puchero";
+
+
          break;
      } //fin switch
       setTimeout(() => {
@@ -524,26 +565,25 @@ audio.play();
       resetGame();
      }
 
-    if(array[ultimoTurno].fichasRecibidas == 0 && arrayPucheros[0].fichasRellenas == 0 && arrayPucheros[1].fichasRellenas == 0 && arrayPucheros[2].fichasRellenas == 0 
-      && arrayPucheros[3].fichasRellenas == 0 && arrayPucheros[4].fichasRellenas == 0 && arrayPucheros[5].fichasRellenas == 0
-      && arrayPucheros[6].fichasRellenas == 0 && arrayPucheros[7].fichasRellenas == 0 ){
-                botonJ.innerHTML = "Volver a jugar";
-                ElegirGanador();
-                sonarWin();
-                console.log(array)
-                console.log(arrayPucheros)
-      }
+    //if(array[ultimoTurno].fichasRecibidas == 0 && arrayPucheros[0].fichasRellenas == 0 && arrayPucheros[1].fichasRellenas == 0 && arrayPucheros[2].fichasRellenas == 0 
+    //  && arrayPucheros[3].fichasRellenas == 0 && arrayPucheros[4].fichasRellenas == 0 && arrayPucheros[5].fichasRellenas == 0
+    //  && arrayPucheros[6].fichasRellenas == 0 && arrayPucheros[7].fichasRellenas == 0 ){
+    //            botonJ.innerHTML = "Volver a jugar";
+    //            ElegirGanador();
+    //            sonarWin();
+    //            console.log(array)
+    //            console.log(arrayPucheros)
+    //  }
 
     
 
 
-
-   if(array[ultimoTurno].fichasRecibidas == 0 && (arrayPucheros[0].fichasRellenas > 0 || arrayPucheros[1].fichasRellenas > 0 || arrayPucheros[2].fichasRellenas > 0 
-    || arrayPucheros[3].fichasRellenas > 0 || arrayPucheros[4].fichasRellenas > 0 || arrayPucheros[5].fichasRellenas > 0
-    || arrayPucheros[6].fichasRellenas > 0 || arrayPucheros[7].fichasRellenas > 0 )){
-      botonJ.innerHTML = "Tirar dados"
-      info.innerHTML = "Seguir tirando dados hasta vaciar los pucheros o sacar 12";
-   }
+   //if(array[ultimoTurno].fichasRecibidas == 0 && (arrayPucheros[0].fichasRellenas > 0 || arrayPucheros[1].fichasRellenas > 0 || arrayPucheros[2].fichasRellenas > 0 
+   // || arrayPucheros[3].fichasRellenas > 0 || arrayPucheros[4].fichasRellenas > 0 || arrayPucheros[5].fichasRellenas > 0
+   // || arrayPucheros[6].fichasRellenas > 0 || arrayPucheros[7].fichasRellenas > 0 )){
+   //   botonJ.innerHTML = "Tirar dados"
+   //   info.innerHTML = "Seguir tirando dados hasta vaciar los pucheros o sacar 12";
+   //}
 
    if(botonJ.innerHTML != "Volver a jugar"){
       setTimeout(() => {
@@ -557,6 +597,10 @@ audio.play();
     
  
   }
+
+}
+
+function texto(e){
 
 }
 

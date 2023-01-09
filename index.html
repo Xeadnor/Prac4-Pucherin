@@ -23,10 +23,10 @@
              <form id="form">
                 <label for="jugadores">Número de jugadores:</label></br>
                 <input type="number" id="jugadores" name="jugadores" placeholder="De 2 a 6 jugadores"max="6" min="2" required style="width :155px;"></br>
-                <label for="fichas">Fichas por cada jugador:</label></br>
-                <input type="radio" name="fichas" id="fichas" value="30" required>30
-                <input type="radio" name="fichas" id="fichas" value="40" required>40
-                <input type="radio" name="fichas" id="fichas" value="50" required>50</br>
+                <label for="fichas">Duracion de la partida</label></br>
+                <input type="radio" name="fichas" id="fichas" value="30" required>Corta
+                <input type="radio" name="fichas" id="fichas" value="40" required>Media
+                <input type="radio" name="fichas" id="fichas" value="50" required>Larga</br>
                 <input type="submit" class="boton">
              </form>
             </div>
@@ -55,7 +55,7 @@
                     </div>
 
                     <div class="row col-12 justify-content-around mt-5">
-                            <div class="col-4 border d-flex" id="nDados">
+                            <div class="col-6 d-flex" id="nDados">
 
                                 <div id="dice" data-side="1">
                                     <div class="sides side-1">
@@ -132,7 +132,7 @@
                             </div>
 
                     
-                            <div class="col-5 col-lg-3 border" id="fichasR">Fichas que quedan</div>
+                            <div class="col-5 col-lg-3 border" id="fichasR" hidden>Fichas que quedan</div>
                     </div>
 
                         <div class="row col-12  justify-content-center mt-5" id="listajugadores"> </div>
