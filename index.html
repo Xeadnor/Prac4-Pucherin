@@ -27,6 +27,9 @@
                 <input type="radio" name="fichas" id="fichas" value="30" required>Corta
                 <input type="radio" name="fichas" id="fichas" value="40" required>Media
                 <input type="radio" name="fichas" id="fichas" value="50" required>Larga</br>
+                <label for="fichas">Como desea jugar la partida</label></br>
+                <input type="radio" name="tipoJuego" id="tipoJuego" value="GRAFICO" required>Version grafica
+                <input type="radio" name="tipoJuego" id="tipoJuego" value="TEXTO" required>Versión texto</br>
                 <input type="submit" class="boton">
              </form>
             </div>
@@ -35,7 +38,29 @@
     
     </div>
     
-        
+    <div class="container-fluid p-0 justify-content-center" id="texto" style="display:none">
+        <div class="row  justify-content-center">
+            <div class="col-4 border justify-content-center">
+                <div class="row col-12  justify-content-center" style="margin: 0px;">Lista de jugadores </div>
+                <div class="row col-12  justify-content-center" id="listajugadores" style="margin: 0px;"> </div>
+                <div class="row col-12  justify-content-center" style="margin: 0px;">Puchero </div>
+                <div class="row col-12  justify-content-center" id="puchero" style="margin: 0px;"> </div>
+                <div class="row col-12  justify-content-center" style="margin: 0px;">Casillas </div>
+                <div class="row col-12  justify-content-center" id="casillas" style="margin: 0px;"> </div>
+                <div class="row col-12  justify-content-center mt-3" style="margin: 0px;">Flujo de partida </div>
+                <div class="row col-12  bg-dark text-light" id="flujoPartida" style="margin: 0px;"> >Jugador 1 ha sacado 3</br> >segundo turno </br> >dasdas turno </div>
+                <div class="row col-12  justify-content-center" style="margin: 0px;">
+                    <div class="col-5 col-lg-4 "><button id="botonJT" class="boton">Tirar Dados</button> </div> 
+                </div>
+            </div>
+
+
+        </div>
+        <div class="row col-12  justify-content-center mt-5" style="margin: 0px;">
+            <div class="col-5 col-lg-4 "><button id="botonS" class="boton">Salir del juego</button> </div> 
+        </div>
+    </div>  
+
     <div class="container-fluid p-0" id="grafico" style="display:none">
         <div class="row col-12 m-0 p-0">
 
@@ -135,7 +160,7 @@
                             <div class="col-5 col-lg-3 border" id="fichasR" hidden>Fichas que quedan</div>
                     </div>
 
-                        <div class="row col-12  justify-content-center mt-5" id="listajugadores" style="margin: 0px;"> </div>
+                        <div class="row col-12  justify-content-center mt-5" id="listajugadoresG" style="margin: 0px;"> </div>
                     
                         <div class="row col-12  justify-content-center mt-5" style="margin: 0px;">
                             <div class="col-5 col-lg-4 "><button id="botonJ" class="boton">Empezar a jugar</button> </div> 

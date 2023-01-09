@@ -3,19 +3,37 @@ const jugadores = document.getElementById("jugadores");
 const boton = document.getElementById("mostrar");
 const form = document.getElementById("form");
 const valorFicha = document.getElementsByName('fichas');
+const tipoJuego = document.getElementsByName('tipoJuego');
 const botonJ = document.getElementById("botonJ");
 const botonS=document.getElementById("botonS")
 const nDados = document.getElementById("nDados");
 const turno = document.getElementById("turno");
 const bote = document.getElementById("bote");
 const info = document.getElementById("fichasR")
+const pucheroT = document.getElementById("puchero")
+const casillasT = document.getElementById("casillas")
 var fichasTotales = 0;
+var tipoJ
 
-form.addEventListener("submit",grafico);
+form.addEventListener("submit",elegirJuego);
 
-function grafico(e) {
-  var fichasBote = 0;
+function elegirJuego(e) {
   e.preventDefault();
+  if(tipoJuego[0].checked){
+    tipoJ = "GRAFICO";
+  }else if (tipoJuego[1].checked) {
+    tipoJ = "TEXTO";
+  }
+
+  if(tipoJ == "GRAFICO"){
+    grafico();
+  }else if (tipoJ == "TEXTO") {
+    texto();
+  }
+}
+
+function grafico() {
+  var fichasBote = 0;
   var primerT = (primerTurno()-1);
   var ultimoTurno = primerT
 
@@ -56,7 +74,7 @@ for (let i = 1; i <= jugadores.value; i++) {
     text += ("<div class='row justify-content-center'><div class='col-3 border'>" + copyOfArray[i].name  + "</div><div class='col-3 border'> Fichas: " + copyOfArray[i].fichasRecibidas + "</div>" + "<div class='col-3 border'> Puntos: " + copyOfArray[i].fichasObtenidas + "</div>"  + "</div>");
     
   }
-  document.getElementById("listajugadores").innerHTML= text;
+  document.getElementById("listajugadoresG").innerHTML= text;
   }
   function ElegirGanador(){
     let arrayWiner = [...array]
@@ -381,6 +399,7 @@ audio.play();
           primerT = 0;
         }
         comprobarSiEs0();
+        pintarPuntuacion();
         console.log(array)
         console.log("---")
         console.log("Turno : " + primerT);
@@ -565,25 +584,16 @@ audio.play();
       resetGame();
      }
 
-    //if(array[ultimoTurno].fichasRecibidas == 0 && arrayPucheros[0].fichasRellenas == 0 && arrayPucheros[1].fichasRellenas == 0 && arrayPucheros[2].fichasRellenas == 0 
-    //  && arrayPucheros[3].fichasRellenas == 0 && arrayPucheros[4].fichasRellenas == 0 && arrayPucheros[5].fichasRellenas == 0
-    //  && arrayPucheros[6].fichasRellenas == 0 && arrayPucheros[7].fichasRellenas == 0 ){
-    //            botonJ.innerHTML = "Volver a jugar";
-    //            ElegirGanador();
-    //            sonarWin();
-    //            console.log(array)
-    //            console.log(arrayPucheros)
-    //  }
+    if(array[ultimoTurno].fichasRecibidas == 0 && arrayPucheros[0].fichasRellenas == 0 && arrayPucheros[1].fichasRellenas == 0 && arrayPucheros[2].fichasRellenas == 0 
+      && arrayPucheros[3].fichasRellenas == 0 && arrayPucheros[4].fichasRellenas == 0 && arrayPucheros[5].fichasRellenas == 0
+      && arrayPucheros[6].fichasRellenas == 0 && arrayPucheros[7].fichasRellenas == 0 ){
+                botonJ.innerHTML = "Volver a jugar";
+                ElegirGanador();
+                sonarWin();
+                console.log(array)
+                console.log(arrayPucheros)
+      }
 
-    
-
-
-   //if(array[ultimoTurno].fichasRecibidas == 0 && (arrayPucheros[0].fichasRellenas > 0 || arrayPucheros[1].fichasRellenas > 0 || arrayPucheros[2].fichasRellenas > 0 
-   // || arrayPucheros[3].fichasRellenas > 0 || arrayPucheros[4].fichasRellenas > 0 || arrayPucheros[5].fichasRellenas > 0
-   // || arrayPucheros[6].fichasRellenas > 0 || arrayPucheros[7].fichasRellenas > 0 )){
-   //   botonJ.innerHTML = "Tirar dados"
-   //   info.innerHTML = "Seguir tirando dados hasta vaciar los pucheros o sacar 12";
-   //}
 
    if(botonJ.innerHTML != "Volver a jugar"){
       setTimeout(() => {
@@ -600,7 +610,120 @@ audio.play();
 
 }
 
-function texto(e){
+function texto(){
+    var fichasBote = 0;
+    var primerT = (primerTurno()-1);
+    var ultimoTurno = primerT
 
+    function primerTurno(){
+      return Math.floor(Math.random() * (jugadores.value - 1 + 1) + 1)
+}
+
+        function crearJugador(name,fichas) {
+      return {
+        name: name,
+        fichasRecibidas: fichas,
+        fichasObtenidas: 0
+  
+      };
+    }
+
+    if(valorFicha[0].checked){
+      fichasTotales = 30;
+    }else if (valorFicha[1].checked) {
+      fichasTotales = 40;
+    }else if (valorFicha[2].checked) {
+      fichasTotales = 50;
+    }
+
+      //array de jugadores que se rellena según el num selecionado
+  const array = [];
+  for (let i = 1; i <= jugadores.value; i++) {
+    let jugador = crearJugador("Jugador " + i,fichasTotales);
+    array.push(jugador);
+  }
+
+    //Creacion del objeto puchero 7
+    var puchero7 = {
+      fichasRellenas:0
+    };
+    //Creacion de los pucheros 2-6 8-11
+    
+    //Array con los pucheros
+    function crearPuchero(fichas) {
+      return {
+        fichasCapacidad: fichas,
+        fichasRellenas: 0
+    
+      };
+    } 
+    const arrayPucheros = [];
+    for (let i = 2; i <= 11; i++) {
+      if(i!=7){
+        let puchero = crearPuchero(i);
+        arrayPucheros.push(puchero);
+      }
+    
+    }
+  document.getElementById("opciones").style.display="none" 
+  document.getElementById("texto").style.display="block"
+
+  function compare( a, b ) {
+    if ( a.fichasObtenidas < b.fichasObtenidas ){
+      return 1;
+    }
+    if ( a.fichasObtenidas > b.fichasObtenidas ){
+      return -1;
+    }
+    return 0;
+  }
+  function  pintarPuchero() {
+    var text = ("<div class='row justify-content-center'><div class='col-4 border'> Puchero </div><div class='col-4 border'> Fichas : " + puchero7.fichasRellenas +  "</div></div>");
+
+    pucheroT.innerHTML= text;
+  }
+  function pintarCasillas() {
+    var text = "";
+    for (let i = 0; i < arrayPucheros.length; i++) {
+      text += ("<div class='row justify-content-center'><div class='col-4 border'> Casilla " + arrayPucheros[i].fichasCapacidad + " </div><div class='col-4 border'> Fichas rellenas: " + arrayPucheros[i].fichasRellenas + "/" + arrayPucheros[i].fichasCapacidad +  "</div></div>");
+      
+    }
+    casillasT.innerHTML= text;
+  }
+  function pintarPuntuacion() {
+    let copyOfArray = [...array]
+    copyOfArray.sort( compare );
+        var text = "";
+    for (let i = 0; i < jugadores.value; i++) {
+      text += ("<div class='row justify-content-center'><div class='col-3 border'>" + copyOfArray[i].name  + "</div><div class='col-3 border'> Fichas: " + copyOfArray[i].fichasRecibidas + "</div>" + "<div class='col-3 border'> Puntos: " + copyOfArray[i].fichasObtenidas + "</div>"  + "</div>");
+      
+    }
+    document.getElementById("listajugadores").innerHTML= text;
+    }
+
+    pintarPuntuacion();
+    pintarCasillas();
+    pintarPuchero();
+    botonS.addEventListener("click",Volver)
+    function Volver(){
+      document.getElementById("opciones").style.display="block" 
+      document.getElementById("texto").style.display="none" 
+      resetGame();
+  
+    }
+
+    
+
+    function resetGame(){
+      for (let i = 0; i < array.length; i++) {
+        array[i].fichasRecibidas = fichasTotales;
+        array[i].fichasObtenidas = 0;
+      }
+      for (let i = 0; i < arrayPucheros.length; i++) {
+        arrayPucheros[i].fichasRellenas = 0;
+      }
+      fichasBote = 0;
+      pintarPuntuacion();   
+    }
 }
 
