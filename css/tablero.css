@@ -57,14 +57,14 @@ html,body{
     border-radius: 6px;
     
     color: white;
-    padding: 14px 30px;
+    padding: 5px 37px;
     text-align: center;
     display: inline-block;
     font-size: 16px;
     margin: 4px 2px;
     transition-duration: 0.4s;
     cursor: pointer;
-    text-decoration: none;
+    text-decoration: solid;
     text-transform: uppercase;
   }
   .boton:hover {
@@ -156,3 +156,34 @@ html,body{
     }
 
   }
+
+
+ /* @media (max-width: 400px) { // para tamaños muy pequeños de pantalla  
+      
+    .casilla {
+      position: absolute;
+      width: 194px;
+      height: 92px;
+     
+    }
+
+    .puchero {
+      margin: 0;
+      position: absolute;
+      left: 73.82px;
+      top: 673.442px;
+      width: 194px;
+      height: 92px;
+    }
+
+    #bote{
+      margin: 0;
+      position: absolute;
+        left: 119.82px;
+        top: 763.442px;
+        width:101px;
+        height: 50px;
+  
+    }
+
+  }*/
