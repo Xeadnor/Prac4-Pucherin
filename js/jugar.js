@@ -5,6 +5,7 @@ const form = document.getElementById("form");
 const valorFicha = document.getElementsByName('fichas');
 const tipoJuego = document.getElementsByName('tipoJuego');
 const botonJ = document.getElementById("botonJ");
+const botonJT = document.getElementById("botonJT");
 const botonS=document.getElementById("botonS")
 const nDados = document.getElementById("nDados");
 const turno = document.getElementById("turno");
@@ -12,6 +13,12 @@ const bote = document.getElementById("bote");
 const info = document.getElementById("fichasR")
 const pucheroT = document.getElementById("puchero")
 const casillasT = document.getElementById("casillas")
+const flujoPartida = document.getElementById("flujoPartida")
+const flujoTurno = document.getElementById("flujoTurno")
+const flujoDados = document.getElementById("flujoDados")
+const informacion1 = document.getElementById("informacion1")
+const informacion2 = document.getElementById("informacion2")
+
 var fichasTotales = 0;
 var tipoJ
 
@@ -591,9 +598,9 @@ audio.play();
         if(primerT == jugadores.value){
           primerT = 0;
         }
+        pintarPuntuacion();
       }, 1100)
     }
-
 
 
    if(botonJ.innerHTML != "Volver a jugar"){
@@ -612,6 +619,7 @@ audio.play();
 }
 
 function texto(){
+  var textoFlujo = ""
     var fichasBote = 0;
     var primerT = (primerTurno()-1);
     var ultimoTurno = primerT
@@ -620,7 +628,17 @@ function texto(){
       return Math.floor(Math.random() * (jugadores.value - 1 + 1) + 1)
 }
 
-        function crearJugador(name,fichas) {
+        function crearJugador(name,fichas) {  function rollDice() {
+          let result = Math.floor(Math.random() * (6 - 1 + 1)) + 1;
+          let result2 =  Math.floor(Math.random() * (6 - 1 + 1)) + 1;
+          dice.dataset.side = result;
+          dice2.dataset.side=result2;
+          dice.classList.toggle("reRoll");
+          dice2.classList.toggle("reRoll");
+      
+          return result+result2;
+      
+      }
       return {
         name: name,
         fichasRecibidas: fichas,
@@ -726,5 +744,177 @@ function texto(){
       fichasBote = 0;
       pintarPuntuacion();   
     }
+    function actualizarInfo(){
+      pintarPuntuacion();
+      pintarCasillas();
+      pintarPuchero();
+    }
+    function rollDice() {
+      let result = Math.floor(Math.random() * (6 - 1 + 1)) + 1;
+      let result2 =  Math.floor(Math.random() * (6 - 1 + 1)) + 1;
+      dice.dataset.side = result;
+      dice2.dataset.side=result2;
+      dice.classList.toggle("reRoll");
+      dice2.classList.toggle("reRoll");
+  
+      return result+result2;
+  
+  }
+  function cambiarTurnoJugador(nombre){
+    flujoTurno.innerHTML = ">Turno de " + nombre;
+  }
+  function limpiarPantalla(){
+      flujoDados.innerHTML = ""
+      informacion1.innerHTML = ""
+      informacion2.innerHTML = ""
+       }
+
+    botonJT.addEventListener("click",cambiarModo)
+    function cambiarModo(e) {
+      e.preventDefault();
+      if(botonJT.innerHTML == "Empezar partida"){
+        botonJT.innerHTML = "Tirar Dados";
+        
+        flujoTurno.innerHTML = ">Turno de " + array[primerT].name;
+
+      }else if (botonJT.innerHTML == "Tirar Dados") {
+        jugar();
+      } 
+    }
+    function jugar(){
+      limpiarPantalla();
+      var numeroDados = rollDice();
+      flujoDados.innerHTML = ">El jugador " + array[primerT].name + " ha sacado un : " + numeroDados;
+      console.log(numeroDados);
+      switch (numeroDados) {
+        case 2:
+         arrayPucheros[0].fichasRellenas++;
+         if(arrayPucheros[0].fichasRellenas == arrayPucheros[0].fichasCapacidad){
+          informacion1.innerHTML = ">El " + array[primerT].name + " se lleva las fichas de la casilla!"
+           arrayPucheros[0].fichasRellenas = 0;
+           setTimeout(() => {
+             array[primerT].fichasObtenidas = array[primerT].fichasObtenidas + arrayPucheros[0].fichasCapacidad
+           }, 1000)
+         }
+        break;
+
+        case 3:
+          arrayPucheros[1].fichasRellenas++;
+          if(arrayPucheros[1].fichasRellenas == arrayPucheros[1].fichasCapacidad){
+            informacion1.innerHTML = ">El " + array[primerT].name + " se lleva las fichas de la casilla!"
+            arrayPucheros[1].fichasRellenas = 0;
+            setTimeout(() => {
+              array[primerT].fichasObtenidas = array[primerT].fichasObtenidas + arrayPucheros[1].fichasCapacidad
+            }, 1000)
+          }
+        break;
+
+        case 4:
+          arrayPucheros[2].fichasRellenas++;
+          if(arrayPucheros[2].fichasRellenas == arrayPucheros[2].fichasCapacidad){
+            informacion1.innerHTML = ">El " + array[primerT].name + " se lleva las fichas de la casilla!"
+            arrayPucheros[2].fichasRellenas = 0;
+            setTimeout(() => {
+              array[primerT].fichasObtenidas = array[primerT].fichasObtenidas + arrayPucheros[2].fichasCapacidad
+            }, 1000)
+          }
+        break;
+
+        case 5:
+          arrayPucheros[3].fichasRellenas++;
+          if(arrayPucheros[3].fichasRellenas == arrayPucheros[3].fichasCapacidad){
+            informacion1.innerHTML = ">El " + array[primerT].name + " se lleva las fichas de la casilla!"
+            arrayPucheros[3].fichasRellenas = 0;
+            setTimeout(() => {
+              array[primerT].fichasObtenidas = array[primerT].fichasObtenidas + arrayPucheros[3].fichasCapacidad
+            }, 1000)
+          }
+        break;
+
+        case 6:
+          arrayPucheros[4].fichasRellenas++;
+          if(arrayPucheros[4].fichasRellenas == arrayPucheros[4].fichasCapacidad){
+            informacion1.innerHTML = ">El " + array[primerT].name + " se lleva las fichas de la casilla!"
+            arrayPucheros[4].fichasRellenas = 0;
+            setTimeout(() => {
+              array[primerT].fichasObtenidas = array[primerT].fichasObtenidas + arrayPucheros[4].fichasCapacidad
+            }, 1000)
+          }
+        break;
+
+        case 7:
+         fichasBote++;
+         informacion1.innerHTML = "Se añade la ficha al puchero"
+
+        break;  
+
+        case 8:
+          arrayPucheros[5].fichasRellenas++;
+          if(arrayPucheros[5].fichasRellenas == arrayPucheros[5].fichasCapacidad){
+            informacion1.innerHTML = ">El " + array[primerT].name + " se lleva las fichas de la casilla!"
+            arrayPucheros[5].fichasRellenas = 0;
+            setTimeout(() => {
+              array[primerT].fichasObtenidas = array[primerT].fichasObtenidas + arrayPucheros[5].fichasCapacidad
+            }, 1000)
+          }
+         break;
+
+         case 9:
+          arrayPucheros[6].fichasRellenas++;
+          if(arrayPucheros[6].fichasRellenas == arrayPucheros[6].fichasCapacidad){
+            informacion1.innerHTML = ">El " + array[primerT].name + " se lleva las fichas de la casilla!"
+            arrayPucheros[6].fichasRellenas = 0;
+            setTimeout(() => {
+              array[primerT].fichasObtenidas = array[primerT].fichasObtenidas + arrayPucheros[6].fichasCapacidad
+            }, 1000)
+          }
+         break;
+
+         case 10:
+          arrayPucheros[7].fichasRellenas++;
+          if(arrayPucheros[7].fichasRellenas == arrayPucheros[7].fichasCapacidad){
+            informacion1.innerHTML = ">El " + array[primerT].name + " se lleva las fichas de la casilla!"
+            arrayPucheros[7].fichasRellenas = 0;
+            setTimeout(() => {
+              array[primerT].fichasObtenidas = array[primerT].fichasObtenidas + arrayPucheros[7].fichasCapacidad
+            }, 1000)
+          }
+         break;
+
+         case 11:
+          arrayPucheros[8].fichasRellenas++;
+          if(arrayPucheros[8].fichasRellenas == arrayPucheros[8].fichasCapacidad){
+            informacion1.innerHTML = ">El " + array[primerT].name + " se lleva las fichas de la casilla!"
+            arrayPucheros[8].fichasRellenas = 0;
+            setTimeout(() => {
+              array[primerT].fichasObtenidas = array[primerT].fichasObtenidas + arrayPucheros[8].fichasCapacidad
+            }, 1000)
+          }
+         break;
+         
+         //en caso de que salga el 12 todas las fichas del puchero se suman al marcador del jugador
+         default:
+         array[primerT].fichasObtenidas = array[primerT].fichasObtenidas + fichasBote
+         fichasBote = 0;
+         informacion1.innerHTML = ">El " + array[primerT].name + " se lleva las fichas del bote!"
+         break;
+     } //fin switch
+     setTimeout(() => {
+       if(numeroDados != 12){
+         array[primerT].fichasRecibidas--;
+       }
+       primerT++;
+       if(primerT == jugadores.value){
+         primerT = 0;
+       }
+       cambiarTurnoJugador(array[primerT].name);
+       actualizarInfo()
+       limpiarPantalla()
+     }, 3000)
+
+    }
+
+
+
 }
 
