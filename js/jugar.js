@@ -741,7 +741,7 @@ function texto(){
       for (let i = 0; i < arrayPucheros.length; i++) {
         arrayPucheros[i].fichasRellenas = 0;
       }
-      fichasBote = 0;
+      puchero7.fichasRellenas = 0;
       pintarPuntuacion();   
     }
     function actualizarInfo(){
@@ -843,7 +843,7 @@ function texto(){
         break;
 
         case 7:
-         fichasBote++;
+          puchero7.fichasRellenas++;
          informacion1.innerHTML = "Se añade la ficha al puchero"
 
         break;  
@@ -894,8 +894,8 @@ function texto(){
          
          //en caso de que salga el 12 todas las fichas del puchero se suman al marcador del jugador
          default:
-         array[primerT].fichasObtenidas = array[primerT].fichasObtenidas + fichasBote
-         fichasBote = 0;
+         array[primerT].fichasObtenidas = array[primerT].fichasObtenidas + puchero7.fichasRellenas
+         puchero7.fichasRellenas = 0;
          informacion1.innerHTML = ">El " + array[primerT].name + " se lleva las fichas del bote!"
          break;
      } //fin switch
