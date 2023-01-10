@@ -79,10 +79,18 @@ for (let i = 1; i <= jugadores.value; i++) {
   function ElegirGanador(){
     let arrayWiner = [...array]
   arrayWiner.sort( compare );
-  document.getElementById("Ganador").innerHTML = "El ganador es : " + arrayWiner[0].name;//TODO cambiar array[0 por un for que imprima todos los del array winner]
+     let arrW= arrayWiner[0].fichasObtenidas;
+     let texto = ""
 
-  //NO COMPROBAMOS EMPATES ENTRE PUNTOS
-
+  for (let i = 0; i < arrayWiner.length; i++) {
+    if(arrayWiner[i].fichasObtenidas== arrW){
+      texto += arrayWiner[i].name + ","
+    }
+  }
+    document.getElementById("Ganador").innerHTML = "El ganador es : " + texto
+    
+  
+    
   }
 
   //Funcion compare para la funcion pintarPuntuacion()
@@ -134,7 +142,7 @@ function sonarDados(numeroDados) {
   const audio = new Audio("sonidos/dados.mp3");
   audio.play();
   setTimeout(() => {
-  //botonJ.disabled = false;
+  botonJ.disabled = false;
   }, 2000)
 }
 
@@ -252,7 +260,7 @@ audio.play();
 
     if(botonJ.innerHTML == "Tirar dados" && info.innerHTML != "Seguir tirando dados hasta vaciar los pucheros o sacar 12"){
       pintarPuntuacion();
-      //botonJ.disabled = true;
+      botonJ.disabled = true;
       var numeroDados = rollDice();
       sonarDados(numeroDados)
 
@@ -400,9 +408,6 @@ audio.play();
         }
         comprobarSiEs0();
         pintarPuntuacion();
-        console.log(array)
-        console.log("---")
-        console.log("Turno : " + primerT);
       }, 1100)
     }
 
@@ -412,11 +417,14 @@ audio.play();
         if(array[i].fichasRecibidas > 0){
           while (array[primerT].fichasRecibidas == 0) {
             primerT++
+            if(primerT == jugadores.value){
+              primerT = 0;
+            }
           }
           return false;
         }else if(array[i].fichasRecibidas == 0){
           counter++;
-          console.log(counter);
+
         }
         if(counter == jugadores.value){
           botonJ.innerHTML = "Tirar dados"
@@ -426,11 +434,15 @@ audio.play();
       }
     }
 
+    if(botonJ.innerHTML == "Volver a jugar"){
+      resetGame();
+     }
+
 
     //fin de juego ultimos turnos sin fichas por poner
     if(botonJ.innerHTML == "Tirar dados" && info.innerHTML == "Seguir tirando dados hasta vaciar los pucheros o sacar 12"){
       pintarPuntuacion();
-      //botonJ.disabled = true;
+      botonJ.disabled = true;
       var numeroDados = rollDice();
       sonarDados(numeroDados)
 
@@ -498,7 +510,6 @@ audio.play();
         case 7:
          
          bote.innerHTML = "Hay " + fichasBote + " fichas en el puchero";
-         sonarPuchero();
 
         break;  
 
@@ -552,22 +563,25 @@ audio.play();
          //en caso de que salga el 12 todas las fichas del puchero y todas las fichas del tablero se suman al marcador del jugador
          default:
           
-         
-
-          let fichasTablero = 0;
+         let fichasTablero = 0;
 
          for (let i = 0; i < arrayPucheros.length; i++) {
 
           fichasTablero += arrayPucheros[i].fichasRellenas
+
           if(i < 5){
-            pintarCasilla(canvases[numeroDados-2], numeroDados, 0)
+            pintarCasilla(canvases[i], i+2, 0)
           }else{
-          pintarCasilla(canvases[numeroDados-3], numeroDados, 0)}
+          pintarCasilla(canvases[i], i+3, 0)}
 
          }
          array[primerT].fichasObtenidas = array[primerT].fichasObtenidas + fichasBote + fichasTablero
          fichasBote = 0;
          bote.innerHTML = "Hay " + fichasBote + " fichas en el puchero";
+
+         botonJ.innerHTML = "Volver a jugar";
+         ElegirGanador();
+         sonarWin();
 
 
          break;
@@ -580,19 +594,6 @@ audio.play();
       }, 1100)
     }
 
-    if(botonJ.innerHTML == "Volver a jugar"){
-      resetGame();
-     }
-
-    if(array[ultimoTurno].fichasRecibidas == 0 && arrayPucheros[0].fichasRellenas == 0 && arrayPucheros[1].fichasRellenas == 0 && arrayPucheros[2].fichasRellenas == 0 
-      && arrayPucheros[3].fichasRellenas == 0 && arrayPucheros[4].fichasRellenas == 0 && arrayPucheros[5].fichasRellenas == 0
-      && arrayPucheros[6].fichasRellenas == 0 && arrayPucheros[7].fichasRellenas == 0 ){
-                botonJ.innerHTML = "Volver a jugar";
-                ElegirGanador();
-                sonarWin();
-                console.log(array)
-                console.log(arrayPucheros)
-      }
 
 
    if(botonJ.innerHTML != "Volver a jugar"){
