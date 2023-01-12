@@ -92,10 +92,31 @@ function calcularElipseTop(){
 }
 
 function pintarCasilla(canvas, fichas, num){
+
+  
   var ctx = canvas.getContext('2d');
+  ctx.beginPath();
+  ctx.arc(canvas.width / 2, canvas.height / 2, 65, 0, 2 * Math.PI);
+  ctx.fillStyle = 'red';
+  ctx.fill();
+
+  ctx.beginPath();
   ctx.arc(canvas.width / 2, canvas.height / 2, 60, 0, 2 * Math.PI);
   ctx.fillStyle = 'teal';
   ctx.fill();
+
+  ctx.beginPath();
+  ctx.arc(canvas.width / 2, canvas.height / 2, 30, 0, 2 * Math.PI);
+  ctx.fillStyle = 'brown';
+  ctx.fill();
+
+  ctx.beginPath();
+  ctx.arc(canvas.width / 2, canvas.height / 2, 20, 0, 2 * Math.PI);
+  ctx.fillStyle = 'white';
+  ctx.fill();
+
+
+
   for (var i = 0; i < fichas; i++) {
       // Calcular la posición en el círculo para cada ficha
       var x = Math.cos(2 * Math.PI * i / fichas) * 35 + canvas.width / 2;
@@ -108,7 +129,7 @@ function pintarCasilla(canvas, fichas, num){
          else ctx.fillStyle = 'white'
       ctx.fill();
     
-     ctx.fillStyle = 'white';
+     ctx.fillStyle = 'red';
     // Establecer la fuente para el texto
      ctx.font = '35px sans-serif';
      // Dibujar el número en el canvas usando el método fillText()

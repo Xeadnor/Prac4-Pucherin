@@ -165,7 +165,8 @@ function rollDice() {
 
 }
 
-//Creacion del objeto puchero 7
+
+//Creacion del objeto puchero 7 
 var puchero7 = {
   fichasRellenas:0
 };
