@@ -602,7 +602,7 @@ audio.play();
     function comprobarFin(){
       if(puchero7.fichasRellenas == 0 && arrayPucheros[0].fichasRellenas == 0 && arrayPucheros[1].fichasRellenas == 0 && arrayPucheros[2].fichasRellenas == 0 
         && arrayPucheros[3].fichasRellenas == 0 && arrayPucheros[4].fichasRellenas == 0 && arrayPucheros[5].fichasRellenas == 0
-        && arrayPucheros[6].fichasRellenas == 0 && arrayPucheros[7].fichasRellenas == 0 ){
+        && arrayPucheros[6].fichasRellenas == 0 && arrayPucheros[7].fichasRellenas == 0 && arrayPucheros[8].fichasRellenas == 0 ){
           
           botonJ.innerHTML = "Volver a jugar";
           ElegirGanador();
