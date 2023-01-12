@@ -766,7 +766,7 @@ function texto(){
       actualizarInfo();
       rondaFinal = false;
       console.log("Entro3")
-      botonJT.innerHTML >= "Tirar Dados";   
+      botonJT.innerHTML = "Tirar Dados";   
     }
 
     function actualizarInfo(){
@@ -1119,6 +1119,7 @@ function texto(){
           puchero7.fichasRellenas = 0;
           textArea.append(">El jugador " + array[primerT].name + " se ha llevado todas las fichas del tablero!")
           textArea.append("\n")
+          fichasa0();
           actualizarInfo()
           botonJT.innerHTML = "Volver a jugar";
           ElegirGanador(); 
@@ -1147,6 +1148,7 @@ function texto(){
           && arrayPucheros[3].fichasRellenas == 0 && arrayPucheros[4].fichasRellenas == 0 && arrayPucheros[5].fichasRellenas == 0
           && arrayPucheros[6].fichasRellenas == 0 && arrayPucheros[7].fichasRellenas == 0 ){
             textArea.append(">No quedan mas fichas en el tablero!")
+            textArea.append("\n")
             botonJT.innerHTML = "Volver a jugar";
             ElegirGanador();
           }
@@ -1168,6 +1170,14 @@ function texto(){
       textArea.append("\n")
         
       
+        
+      }
+
+      function fichasa0() {
+        for (let i = 0; i < arrayPucheros.length; i++) {
+          arrayPucheros[i].fichasRellenas = 0;
+          
+        }
         
       }
 
