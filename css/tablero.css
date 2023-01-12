@@ -12,7 +12,9 @@ html,body{
     height:650px;
     background-color:grey;
   }
-  
+  .bg{
+    background-color: rgb(144, 183, 218);
+  }
   .container{
     padding:4px;
     width:100%;
@@ -98,7 +100,7 @@ html,body{
     }
   }
 
-  @media (max-width: 768px) { /* para tamaños pequeños de pantalla  */
+  @media (max-width: 775px) { /* para tamaños pequeños de pantalla  */
 
     .casilla {
       position: absolute;
@@ -158,12 +160,12 @@ html,body{
   }
 
 
- /* @media (max-width: 400px) { // para tamaños muy pequeños de pantalla  
+ @media (max-width: 465px) { /* para tamaños muy pequeños de pantalla  */
       
     .casilla {
       position: absolute;
-      width: 194px;
-      height: 92px;
+      width: 166px;
+      height: 82px;
      
     }
 
@@ -186,4 +188,35 @@ html,body{
   
     }
 
-  }*/
+  }
+
+
+  @media (max-width: 389px) { /* para tamaños muy muy pequeños de pantalla  */
+      
+    .casilla {
+      position: absolute;
+      width: 155px;
+      height: 74px;
+     
+    }
+
+    .puchero {
+      margin: 0;
+      position: absolute;
+      left: 73.82px;
+      top: 673.442px;
+      width: 194px;
+      height: 92px;
+    }
+
+    #bote{
+      margin: 0;
+      position: absolute;
+        left: 119.82px;
+        top: 763.442px;
+        width:101px;
+        height: 50px;
+  
+    }
+
+  }

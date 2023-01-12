@@ -55,31 +55,65 @@ function pintarElipse(){
 }
 
 function calcularElipseLeftA(){ //ampliar la elipse o hacerla más redondeada
-  if(window.innerWidth>=1120){
+  if (window.innerWidth>=1300){
     return 300
+  } else if(window.innerWidth>=1120){
+    return 250
   }else if(window.innerWidth>=992){//para tamaño L, xl y xxl
     return 200
   }else if(window.innerWidth>=768){//para tamaño M
     return 300
   }else if(window.innerWidth>=576){//para tamaños s
     return 200
+  }else if(window.innerWidth>=437){//para tamaños s
+    return 150
+  }else if(window.innerWidth>=376){//para tamaños s
+    return 120
   }else{//para tamaños XS
-    return 118
+    return 100
   }
 }
 function calcularElipseLeftB(){ //posicionar la elipse más hacia la izquierda o hacia la derecha
-  if(window.innerWidth>=992){//para tamaño L, xl y xxl
+  if(window.innerWidth>=1070){//para tamaño L, xl y xxl
     return 320
-  }else if(window.innerWidth>=768){//para tamaño M
-    return 380
-  }else if(window.innerWidth>=576){// para tamaños S
-    return 230
-  }else{//para tamaños XS
+  }else if(window.innerWidth>=992){//para tamaño M
+    return 250
+  }else if(window.innerWidth>=926){//para tamaño M
+    return 400
+  }else if(window.innerWidth>=876){//para tamaño M
+    return 350
+  }else if(window.innerWidth>=826){//para tamaños s
+    return 300
+  }else if(window.innerWidth>=806){// para tamaños S
+    return 280
+  }else if(window.innerWidth>=786){//para tamaños xs
+    return 260
+  }else if(window.innerWidth>=775){//para tamaños xs
+    return 250
+  }else if(window.innerWidth>=665){//para tamaños xs
+    return 280
+  }else if(window.innerWidth>=596){//para tamaños xs
+    return 210
+  }else if(window.innerWidth>=526){//para tamaños xs
+    return 190
+  }else if(window.innerWidth>=505){//para tamaños xs
+    return 170
+  }else if(window.innerWidth>=486){//para tamaños xs
+    return 150
+  }else if(window.innerWidth>=465){//para tamaños xs
+    return 130
+  }else if(window.innerWidth>=437){//para tamaños xs
+    return 100
+  }else if(window.innerWidth>=398){//para tamaños xs
     return 120
+  }else if(window.innerWidth>=358){//para tamaños xs
+    return 110
+  }else if(window.innerWidth>=100){//para tamaños xs
+    return 100
   }
 }
 
-function calcularElipseTop(){
+function calcularElipseTop(){//posicionar la elipse más hacia arriba o hacia abajo
   if(window.innerWidth>=1200){//para tamaños xl y xxl
    return 300
   }else if(window.innerWidth>=992){//para tamaño L
