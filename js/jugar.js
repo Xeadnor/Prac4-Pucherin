@@ -712,19 +712,19 @@ function texto(){
   }
   function pintarCasillas() {
     var text = "";
-    text += ("<div class='row justify-content-center'><div class='col-3 border'> Casilla " + arrayPucheros[0].fichasCapacidad + " </div><div class='col-3 border'> Fichas:" + arrayPucheros[0].fichasRellenas + "/" + arrayPucheros[0].fichasCapacidad +  "</div>");
-    text +=  ("<div class='col-3 border'> Casilla " + arrayPucheros[1].fichasCapacidad + " </div><div class='col-3 border'> Fichas:" + arrayPucheros[1].fichasRellenas + "/" + arrayPucheros[1].fichasCapacidad +  "</div>" + "</div>")
+    text += ("<div class='row justify-content-center'><div class='col-3 border p-0 ps-1'> Casilla " + arrayPucheros[0].fichasCapacidad + " </div><div class='col-3 border p-0 ps-1'> Fichas:" + arrayPucheros[0].fichasRellenas + "/" + arrayPucheros[0].fichasCapacidad +  "</div>");
+    text +=  ("<div class='col-3 border p-0 ps-1'> Casilla " + arrayPucheros[1].fichasCapacidad + " </div><div class='col-3 border p-0 ps-1'> Fichas:" + arrayPucheros[1].fichasRellenas + "/" + arrayPucheros[1].fichasCapacidad +  "</div>" + "</div>")
 
-    text += ("<div class='row justify-content-center'><div class='col-3 border'> Casilla " + arrayPucheros[2].fichasCapacidad + " </div><div class='col-3 border'> Fichas:" + arrayPucheros[2].fichasRellenas + "/" + arrayPucheros[2].fichasCapacidad +  "</div>");
-    text +=  ("<div class='col-3 border'> Casilla " + arrayPucheros[3].fichasCapacidad + " </div><div class='col-3 border'> Fichas:" + arrayPucheros[3].fichasRellenas + "/" + arrayPucheros[3].fichasCapacidad +  "</div>" + "</div>")
+    text += ("<div class='row justify-content-center'><div class='col-3 border p-0 ps-1'> Casilla " + arrayPucheros[2].fichasCapacidad + " </div><div class='col-3 border p-0 ps-1'> Fichas:" + arrayPucheros[2].fichasRellenas + "/" + arrayPucheros[2].fichasCapacidad +  "</div>");
+    text +=  ("<div class='col-3 border p-0 ps-1'> Casilla " + arrayPucheros[3].fichasCapacidad + " </div><div class='col-3 border p-0 ps-1'> Fichas:" + arrayPucheros[3].fichasRellenas + "/" + arrayPucheros[3].fichasCapacidad +  "</div>" + "</div>")
 
-    text += ("<div class='row justify-content-center'><div class='col-3 border'> Casilla " + arrayPucheros[4].fichasCapacidad + " </div><div class='col-3 border'> Fichas:" + arrayPucheros[4].fichasRellenas + "/" + arrayPucheros[4].fichasCapacidad +  "</div>");
-    text +=  ("<div class='col-3 border'> Casilla " + arrayPucheros[5].fichasCapacidad + " </div><div class='col-3 border'> Fichas:" + arrayPucheros[5].fichasRellenas + "/" + arrayPucheros[5].fichasCapacidad +  "</div>" + "</div>")
+    text += ("<div class='row justify-content-center'><div class='col-3 border p-0 ps-1'> Casilla " + arrayPucheros[4].fichasCapacidad + " </div><div class='col-3 border p-0 ps-1'> Fichas:" + arrayPucheros[4].fichasRellenas + "/" + arrayPucheros[4].fichasCapacidad +  "</div>");
+    text +=  ("<div class='col-3 border p-0 ps-1'> Casilla " + arrayPucheros[5].fichasCapacidad + " </div><div class='col-3 border p-0 ps-1'> Fichas:" + arrayPucheros[5].fichasRellenas + "/" + arrayPucheros[5].fichasCapacidad +  "</div>" + "</div>")
 
-    text += ("<div class='row justify-content-center'><div class='col-3 border'> Casilla " + arrayPucheros[6].fichasCapacidad + " </div><div class='col-3 border'> Fichas:" + arrayPucheros[6].fichasRellenas + "/" + arrayPucheros[6].fichasCapacidad +  "</div>");
-    text +=  ("<div class='col-3 border'> Casilla " + arrayPucheros[7].fichasCapacidad + " </div><div class='col-3 border'> Fichas:" + arrayPucheros[7].fichasRellenas + "/" + arrayPucheros[7].fichasCapacidad +  "</div>" + "</div>")
+    text += ("<div class='row justify-content-center'><div class='col-3 border p-0 ps-1'> Casilla " + arrayPucheros[6].fichasCapacidad + " </div><div class='col-3 border p-0 ps-1'> Fichas:" + arrayPucheros[6].fichasRellenas + "/" + arrayPucheros[6].fichasCapacidad +  "</div>");
+    text +=  ("<div class='col-3 border p-0 ps-1'> Casilla " + arrayPucheros[7].fichasCapacidad + " </div><div class='col-3 border p-0 ps-1'> Fichas:" + arrayPucheros[7].fichasRellenas + "/" + arrayPucheros[7].fichasCapacidad +  "</div>" + "</div>")
 
-    text += ("<div class='row justify-content-center'><div class='col-3 border'> Casilla " + arrayPucheros[8].fichasCapacidad + " </div><div class='col-3 border'> Fichas:" + arrayPucheros[8].fichasRellenas + "/" + arrayPucheros[8].fichasCapacidad +  "</div>" + "</div>")
+    text += ("<div class='row justify-content-center'><div class='col-3 border p-0 ps-1'> Casilla " + arrayPucheros[8].fichasCapacidad + " </div><div class='col-3 border p-0 ps-1'> Fichas:" + arrayPucheros[8].fichasRellenas + "/" + arrayPucheros[8].fichasCapacidad +  "</div>" + "</div>")
     casillasT.innerHTML= text;
   }
   function pintarPuntuacion() {
@@ -1146,7 +1146,7 @@ function texto(){
       function comprobarFin(){
         if(puchero7.fichasRellenas == 0 && arrayPucheros[0].fichasRellenas == 0 && arrayPucheros[1].fichasRellenas == 0 && arrayPucheros[2].fichasRellenas == 0 
           && arrayPucheros[3].fichasRellenas == 0 && arrayPucheros[4].fichasRellenas == 0 && arrayPucheros[5].fichasRellenas == 0
-          && arrayPucheros[6].fichasRellenas == 0 && arrayPucheros[7].fichasRellenas == 0 ){
+          && arrayPucheros[6].fichasRellenas == 0 && arrayPucheros[7].fichasRellenas == 0 && arrayPucheros[8].fichasRellenas == 0 ){
             textArea.append(">No quedan mas fichas en el tablero!")
             textArea.append("\n")
             botonJT.innerHTML = "Volver a jugar";
