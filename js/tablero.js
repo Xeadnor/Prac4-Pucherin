@@ -103,13 +103,17 @@ function calcularElipseLeftB(){ //posicionar la elipse más hacia la izquierda o
   }else if(window.innerWidth>=465){//para tamaños xs
     return 130
   }else if(window.innerWidth>=437){//para tamaños xs
-    return 100
+    return 125
   }else if(window.innerWidth>=398){//para tamaños xs
     return 120
   }else if(window.innerWidth>=358){//para tamaños xs
     return 110
-  }else if(window.innerWidth>=100){//para tamaños xs
+  }else if(window.innerWidth>=347){//para tamaños xs
     return 100
+  }else if(window.innerWidth>=327){//para tamaños xs
+    return 80
+  }else{
+    return 90
   }
 }
 
@@ -119,8 +123,12 @@ function calcularElipseTop(){//posicionar la elipse más hacia arriba o hacia ab
   }else if(window.innerWidth>=992){//para tamaño L
     return 300
   }else if(window.innerWidth>=768){//para tamaño M
-    return 700
-  }else{//para tamaños S y XS
+    return 650
+  }else if(window.innerWidth>=576){//para tamaño M
+    return 650
+  } else if(window.innerWidth>=445){//para tamaño M
+    return 650
+  } else{//para tamaños S y XS
     return 700
   }
 }

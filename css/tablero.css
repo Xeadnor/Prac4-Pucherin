@@ -37,7 +37,7 @@ html,body{
   .puchero {
     margin: 0;
     position: absolute;
-    left: 298.813px;
+    left: 294.813px;
     top: 270.442px;
     width: 234px;
     height: 130px;
@@ -46,7 +46,7 @@ html,body{
   #bote{
     margin: 0;
     position: absolute;
-      left: 341.813px;
+      left: 333.813px;
       top: 393.442px;
       width:155px;
       height: 50px;
@@ -75,6 +75,29 @@ html,body{
   }
 
   
+  @media (max-width: 1069px) { /*para tamaños medianos*/
+
+    .box{
+      position: relative;
+      width:100%;
+      height:650px;
+      background-color:grey;
+    }
+
+    .puchero {
+      margin: 0;
+      position: absolute;
+      left: 230.82px;
+      top: 237.442px;
+    }
+
+    #bote{
+      margin: 0;
+      position: absolute;
+        left: 274.82px;
+        top: 366.442px;
+    }
+  }
 
   @media (max-width: 991px) { /*para tamaños medianos*/
 
@@ -88,19 +111,89 @@ html,body{
     .puchero {
       margin: 0;
       position: absolute;
-      left: 360.82px;
-      top: 678.442px;
+      left: 386.82px;
+      top: 551.442px;
     }
 
     #bote{
       margin: 0;
       position: absolute;
-        left: 401.82px;
-        top: 801.442px;
+        left: 424.82px;
+        top: 680.442px;
     }
   }
+  
+  @media (max-width: 925px) { /*para tamaños medianos*/
 
-  @media (max-width: 775px) { /* para tamaños pequeños de pantalla  */
+    .box{
+      position: relative;
+      width:100%;
+      height:1000px;
+      background-color:grey;
+    }
+
+    .puchero {
+      margin: 0;
+      position: absolute;
+      left: 321.82px;
+      top: 561.442px;
+    }
+
+    #bote{
+      margin: 0;
+      position: absolute;
+        left: 358.82px;
+        top: 687.442px;
+    }
+  }
+  
+  @media (max-width: 875px) { /*para tamaños medianos*/
+
+    .box{
+      position: relative;
+      width:100%;
+      height:1000px;
+      background-color:grey;
+    }
+
+    .puchero {
+      margin: 0;
+      position: absolute;
+      left: 265.82px;
+      top: 552.442px;
+    }
+
+    #bote{
+      margin: 0;
+      position: absolute;
+        left: 309.82px;
+        top: 681.442px;
+    }
+  }
+  @media (max-width: 805px) { /*para tamaños medianos*/
+
+    .box{
+      position: relative;
+      width:100%;
+      height:1000px;
+      background-color:grey;
+    }
+
+    .puchero {
+      margin: 0;
+      position: absolute;
+      left: 220.82px;
+      top: 549.442px;
+    }
+
+    #bote{
+      margin: 0;
+      position: absolute;
+        left: 265.82px;
+        top: 675.442px;
+    }
+  }
+  @media (max-width: 774px) { /* para tamaños pequeños de pantalla  */
 
     .casilla {
       position: absolute;
@@ -112,8 +205,8 @@ html,body{
     .puchero {
       margin: 0;
       position: absolute;
-      left: 216.82px;
-      top: 673.442px;
+      left: 263.82px;
+      top: 553.442px;
       width: 194px;
       height: 92px;
     }
@@ -121,28 +214,28 @@ html,body{
     #bote{
       margin: 0;
       position: absolute;
-        left: 261.82px;
-        top: 763.442px;
+        left: 313.82px;
+        top: 645.442px;
         width:101px;
         height: 50px;
   
     }
   }
 
-  @media (max-width: 576px) { /* para tamaños pequeños de pantalla  */
-      
+  @media (max-width: 664px) { /* para tamaños pequeños de pantalla  */
+
     .casilla {
       position: absolute;
       width: 194px;
       height: 92px;
      
     }
-
+    
     .puchero {
       margin: 0;
       position: absolute;
-      left: 73.82px;
-      top: 673.442px;
+      left: 167.82px;
+      top: 565.442px;
       width: 194px;
       height: 92px;
     }
@@ -150,15 +243,52 @@ html,body{
     #bote{
       margin: 0;
       position: absolute;
-        left: 119.82px;
-        top: 763.442px;
+        left: 214.82px;
+        top: 656.442px;
         width:101px;
         height: 50px;
   
     }
+  }
+  @media (max-width: 576px) { /* para tamaños pequeños de pantalla  */
+
+    .puchero {
+      margin: 0;
+      position: absolute;
+      left: 149.82px;
+      top: 615.442px;
+    }
+
+
+    #bote{
+      margin: 0;
+      position: absolute;
+        left: 198.82px;
+        top: 704.442px;
+    }
 
   }
 
+
+  @media (max-width: 504px) { /* para tamaños pequeños de pantalla  */
+
+    .puchero {
+      margin: 0;
+      position: absolute;
+      left: 110.82px;
+      top: 617.442px;
+    }
+
+
+    #bote{
+      margin: 0;
+      position: absolute;
+        left: 157.82px;
+        top: 705.442px;
+    }
+
+  }
+  
 
  @media (max-width: 465px) { /* para tamaños muy pequeños de pantalla  */
       
@@ -172,51 +302,82 @@ html,body{
     .puchero {
       margin: 0;
       position: absolute;
-      left: 73.82px;
-      top: 673.442px;
-      width: 194px;
-      height: 92px;
+      left: 100.82px;
+      top: 608.442px;
+      width: 166px;
+      height: 82px;
     }
 
     #bote{
       margin: 0;
       position: absolute;
-        left: 119.82px;
-        top: 763.442px;
+        left: 135.82px;
+        top: 686.442px;
         width:101px;
         height: 50px;
   
     }
 
   }
-
-
-  @media (max-width: 389px) { /* para tamaños muy muy pequeños de pantalla  */
+  @media (max-width: 444px) { /* para tamaños muy pequeños de pantalla  */
       
-    .casilla {
-      position: absolute;
-      width: 155px;
-      height: 74px;
-     
-    }
-
     .puchero {
       margin: 0;
       position: absolute;
-      left: 73.82px;
-      top: 673.442px;
-      width: 194px;
-      height: 92px;
+      left: 100.82px;
+      top: 646.442px;
+      width: 166px;
+      height: 82px;
     }
 
     #bote{
       margin: 0;
       position: absolute;
-        left: 119.82px;
-        top: 763.442px;
+        left: 135.82px;
+        top: 721.442px;
         width:101px;
         height: 50px;
-  
+    }
+
+  }
+
+  @media (max-width: 397px) { /* para tamaños muy muy pequeños de pantalla  */
+      
+    .casilla {
+      position: absolute;
+      width: 155px;
+      height: 74px;
+    }
+
+    .puchero {
+      margin: 0;
+      position: absolute;
+      left:64.82px;
+      width: 155px;
+      height: 74px;
+    }
+    #bote{
+      left:92.82px;
+    }
+  }
+
+  @media (max-width: 327px) { /* para tamaños muy muy pequeños de pantalla  */
+      
+    .casilla {
+      position: absolute;
+      width: 138px;
+      height: 74px;
+    }
+
+    .puchero {
+      margin: 0;
+      position: absolute;
+      left: 71.82px;
+      width: 138px;
+      height: 74px;
+    }
+    #bote{
+      left: 93.82px;
     }
 
   }

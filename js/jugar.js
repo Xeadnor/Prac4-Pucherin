@@ -36,8 +36,8 @@ function elegirJuego(e) {
     texto();
   }
 }
-function grafico(e) {
-  e.preventDefault();
+
+function grafico() {
   var primerT = (primerTurno()-1);
 
   function crearJugador(name,fichas) {
