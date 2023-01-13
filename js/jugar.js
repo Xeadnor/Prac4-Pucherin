@@ -7,6 +7,7 @@ const tipoJuego = document.getElementsByName('tipoJuego');
 const botonJ = document.getElementById("botonJ");
 const botonJT = document.getElementById("botonJT");
 const botonS=document.getElementById("botonS")
+const botonST=document.getElementById("botonST")
 const nDados = document.getElementById("nDados");
 const turno = document.getElementById("turno");
 const bote = document.getElementById("bote");
@@ -19,24 +20,12 @@ const textArea = document.getElementById("textarea")
 var fichasTotales = 0;
 var tipoJ
 
-form.addEventListener("submit",elegirJuego);
+form.addEventListener("submit",grafico);
 
-function elegirJuego(e) {
+
+
+function grafico(e) {
   e.preventDefault();
-  if(tipoJuego[0].checked){
-    tipoJ = "GRAFICO";
-  }else if (tipoJuego[1].checked) {
-    tipoJ = "TEXTO";
-  }
-
-  if(tipoJ == "GRAFICO"){
-    grafico();
-  }else if (tipoJ == "TEXTO") {
-    texto();
-  }
-}
-
-function grafico() {
   var primerT = (primerTurno()-1);
 
   function crearJugador(name,fichas) {
@@ -741,7 +730,7 @@ function texto(){
     pintarPuntuacion();
     pintarCasillas();
     pintarPuchero();
-    botonS.addEventListener("click",Volver)
+    botonST.addEventListener("click",Volver)
     function Volver(){
       document.getElementById("opciones").style.display="block" 
       document.getElementById("texto").style.display="none" 
