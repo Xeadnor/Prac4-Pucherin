@@ -161,8 +161,8 @@ function pintarCasilla(canvas, fichas, num){
 
   for (var i = 0; i < fichas; i++) {
       // Calcular la posición en el círculo para cada ficha
-      var x = Math.cos(2 * Math.PI * i / fichas) * 35 + canvas.width / 2;
-      var y = Math.sin(2 * Math.PI * i / fichas) * 35 + canvas.height / 2;
+      var x = Math.cos(2 * Math.PI * i / fichas) * 42 + canvas.width / 2;
+      var y = Math.sin(2 * Math.PI * i / fichas) * 42 + canvas.height / 2;
 
       // Dibujar la ficha en la posición calculada
       ctx.beginPath();
@@ -197,6 +197,7 @@ function pintarPuchero(canvas){
       ctx.arc(x, y, 9, 0, 2 * Math.PI);
      
       ctx.fillStyle = 'orange'
+
       ctx.fill();
     
     
