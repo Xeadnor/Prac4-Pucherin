@@ -20,10 +20,22 @@ const textArea = document.getElementById("textarea")
 var fichasTotales = 0;
 var tipoJ
 
-form.addEventListener("submit",grafico);
+form.addEventListener("submit",elegirJuego);
 
+function elegirJuego(e) {
+  e.preventDefault();
+  if(tipoJuego[0].checked){
+    tipoJ = "GRAFICO";
+  }else if (tipoJuego[1].checked) {
+    tipoJ = "TEXTO";
+  }
 
-
+  if(tipoJ == "GRAFICO"){
+    grafico();
+  }else if (tipoJ == "TEXTO") {
+    texto();
+  }
+}
 function grafico(e) {
   e.preventDefault();
   var primerT = (primerTurno()-1);
@@ -153,30 +165,35 @@ function rollDice() {
     return result+result2;
 
 }
-
+class Recipiente  {
+  constructor(){
+    this.fichasRellenas = 0;
+  }
+  };
+  class Casilla extends Recipiente {
+    constructor(fichas) {
+      super();
+      this.fichasCapacidad = fichas;
+    }
+  } 
+  
 
 //Creacion del objeto puchero 7 
-var puchero7 = {
-  fichasRellenas:0
-};
-//Creacion de los pucheros 2-6 8-11
-
+const puchero7 = new Recipiente()
+//Creacion de los pucheros 2-6 8-11 mediante herencia
 //Array con los pucheros
-function crearPuchero(fichas) {
-  return {
-    fichasCapacidad: fichas,
-    fichasRellenas: 0
 
-  };
-} 
 const arrayPucheros = [];
 for (let i = 2; i <= 11; i++) {
   if(i!=7){
-    let puchero = crearPuchero(i);
+    let puchero = new Casilla(i);
     arrayPucheros.push(puchero);
   }
 
 }
+
+
+
 
 //Funcion que resetea el juego
 function resetGame(){
@@ -660,28 +677,33 @@ function texto(){
     array.push(jugador);
   }
 
-    //Creacion del objeto puchero 7
-    var puchero7 = {
-      fichasRellenas:0
-    };
-    //Creacion de los pucheros 2-6 8-11
-    
-    //Array con los pucheros
-    function crearPuchero(fichas) {
-      return {
-        fichasCapacidad: fichas,
-        fichasRellenas: 0
-    
-      };
-    } 
-    const arrayPucheros = [];
-    for (let i = 2; i <= 11; i++) {
-      if(i!=7){
-        let puchero = crearPuchero(i);
-        arrayPucheros.push(puchero);
-      }
-    
+class Recipiente  {
+  constructor(){
+    this.fichasRellenas = 0;
+  }
+  };
+  class Casilla extends Recipiente {
+    constructor(fichas) {
+      super();
+      this.fichasCapacidad = fichas;
     }
+  } 
+  
+
+//Creacion del objeto puchero 7 
+const puchero7 = new Recipiente()
+//Creacion de los pucheros 2-6 8-11 mediante herencia
+//Array con los pucheros
+
+const arrayPucheros = [];
+for (let i = 2; i <= 11; i++) {
+  if(i!=7){
+    let puchero = new Casilla(i);
+    arrayPucheros.push(puchero);
+  }
+
+}
+
   document.getElementById("opciones").style.display="none" 
   document.getElementById("texto").style.display="block"
 
