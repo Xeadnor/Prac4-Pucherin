@@ -1,6 +1,6 @@
 # Práctica 4- El juego del Pucherín
 
-<a src="https://xeadnor.github.io/Prac4-Pucherin/">Haz click aqui para poder jugar!</a>
+<a href="https://xeadnor.github.io/Prac4-Pucherin/">Haz click aqui para poder jugar!</a>
 
 <h1>Caracteristicas y reglas</h1>
 Bienvenido a nuestro pucherin! este se trata de un juego de 1 a 6 personas y gana el que mas fichas tenga al final. Antes de empezar a jugar veamos como es la preparacion del juego.
