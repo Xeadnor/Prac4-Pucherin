@@ -763,6 +763,7 @@ for (let i = 2; i <= 11; i++) {
     pintarPuchero();
     botonST.addEventListener("click",Volver)
     function Volver(){
+      window.location.reload();
       document.getElementById("opciones").style.display="block" 
       document.getElementById("texto").style.display="none" 
       resetGame();
