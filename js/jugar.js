@@ -39,6 +39,10 @@ function elegirJuego(e) {
 
 function grafico() {
   var primerT = (primerTurno()-1);
+  window.addEventListener("resize",repintar)
+function repintar() {
+  repintarElipse(arrayPucheros)
+}
 
   function crearJugador(name,fichas) {
     return {

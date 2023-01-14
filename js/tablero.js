@@ -29,9 +29,8 @@ for (var i = 0; i < casillas; i++) {
 // Obtener una referencia a todos los elementos canvas en la página
 var canvases = document.querySelectorAll('.casilla');
 window.addEventListener("load",pintarElipse)
-window.addEventListener("resize",pintarElipse)
 
-function pintarElipse(){
+function pintarElipse(array){
   // Dibujar una elipse en cada canvas y posicionarlos en una elipse de 
   for (var i = 0; i < canvases.length; i++) {
     // Obtener el contexto del canvas en 2D
@@ -44,12 +43,33 @@ function pintarElipse(){
     //ctx.stroke();
 
     // Posicionar el canvas en la elipse 
-    
         canvases[i].style.left = Math.cos(2 * Math.PI * i / casillas) * calcularElipseLeftA() + calcularElipseLeftB() - 25 + 'px';
         canvases[i].style.top = Math.sin(2 * Math.PI * i / casillas) * 200 + calcularElipseTop()  - 25  + 'px';
     
     if (i>4) pintarCasilla(canvases[i],i+3)
     else pintarCasilla(canvases[i],i+2)
+    
+  }
+}
+
+function repintarElipse(array){
+  // Dibujar una elipse en cada canvas y posicionarlos en una elipse de 
+  for (var i = 0; i < canvases.length; i++) {
+    // Obtener el contexto del canvas en 2D
+    var ctx = canvases[i].getContext('2d');
+
+    // Dibujar una elipse en el canvas
+    ctx.beginPath();  
+    
+    //ctx.ellipse(35, 35, 35, 35, 0, 0, 2 * Math.PI);
+    //ctx.stroke();
+
+    // Posicionar el canvas en la elipse 
+        canvases[i].style.left = Math.cos(2 * Math.PI * i / casillas) * calcularElipseLeftA() + calcularElipseLeftB() - 25 + 'px';
+        canvases[i].style.top = Math.sin(2 * Math.PI * i / casillas) * 200 + calcularElipseTop()  - 25  + 'px';
+    
+    if (i>4) pintarCasilla(canvases[i],i+3,array[i].fichasRellenas)
+    else pintarCasilla(canvases[i],i+2,array[i].fichasRellenas)
     
   }
 }
