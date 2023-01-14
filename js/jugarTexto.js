@@ -431,6 +431,7 @@ function jugar() {
         }
         return 0;
         }
+        
         function fichasa0() {
           for (let i = 0; i < arrayPucheros.length; i++) {
             arrayPucheros[i].fichasRellenas = 0;

@@ -10,10 +10,10 @@ html,body{
     position: relative;
     width:100%;
     height:650px;
-    background-color:grey;
+    background-color:rgb(73, 167, 107);
   }
   .bg{
-    background-color: rgb(144, 183, 218);
+    background-color: rgb(73, 120, 201);
   }
   .container{
     padding:4px;
@@ -81,7 +81,7 @@ html,body{
       position: relative;
       width:100%;
       height:650px;
-      background-color:grey;
+
     }
 
     .puchero {
@@ -105,7 +105,7 @@ html,body{
       position: relative;
       width:100%;
       height:1000px;
-      background-color:grey;
+
     }
 
     .puchero {
@@ -129,7 +129,7 @@ html,body{
       position: relative;
       width:100%;
       height:1000px;
-      background-color:grey;
+
     }
 
     .puchero {
@@ -153,7 +153,7 @@ html,body{
       position: relative;
       width:100%;
       height:1000px;
-      background-color:grey;
+
     }
 
     .puchero {
@@ -176,7 +176,7 @@ html,body{
       position: relative;
       width:100%;
       height:1000px;
-      background-color:grey;
+
     }
 
     .puchero {

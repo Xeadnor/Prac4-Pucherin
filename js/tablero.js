@@ -159,7 +159,7 @@ function pintarCasilla(canvas, fichas, num){
   var ctx = canvas.getContext('2d');
   ctx.beginPath();
   ctx.arc(canvas.width / 2, canvas.height / 2, 65, 0, 2 * Math.PI);
-  ctx.fillStyle = 'red';
+  ctx.fillStyle = 'orange';
   ctx.fill();
 
   ctx.beginPath();
@@ -169,7 +169,7 @@ function pintarCasilla(canvas, fichas, num){
 
   ctx.beginPath();
   ctx.arc(canvas.width / 2, canvas.height / 2, 30, 0, 2 * Math.PI);
-  ctx.fillStyle = 'brown';
+  ctx.fillStyle = 'orange';
   ctx.fill();
 
   ctx.beginPath();
@@ -187,7 +187,7 @@ function pintarCasilla(canvas, fichas, num){
       // Dibujar la ficha en la posición calculada
       ctx.beginPath();
       ctx.arc(x, y, 9, 0, 2 * Math.PI);
-      if (i < num ) ctx.fillStyle = 'orange'
+      if (i < num ) ctx.fillStyle = 'green'
          else ctx.fillStyle = 'white'
       ctx.fill();
     
@@ -204,19 +204,28 @@ function pintarCasilla(canvas, fichas, num){
 
 function pintarPuchero(canvas){
   var ctx = canvas.getContext('2d');
+  ctx.beginPath();
+  ctx.arc(canvas.width / 2, canvas.height / 2, 65, 0, 2 * Math.PI);
+  ctx.fillStyle = 'teal';
+  ctx.fill();
+
+  ctx.beginPath();
   ctx.arc(canvas.width / 2, canvas.height / 2, 60, 0, 2 * Math.PI);
   ctx.fillStyle = 'orange';
   ctx.fill();
+
+ 
+
   for (var i = 0; i < 4; i++) {
       // Calcular la posición en el círculo para cada ficha
-      var x = Math.cos(2 * Math.PI * i ) * 35 + canvas.width / 2;
-      var y = Math.sin(2 * Math.PI * i ) * 35 + canvas.height / 2;
+      var x = Math.cos(2 * Math.PI * i /4) * 35 + canvas.width / 2;
+      var y = Math.sin(2 * Math.PI * i /4) * 35 + canvas.height / 2;
 
       // Dibujar la ficha en la posición calculada
       ctx.beginPath();
-      ctx.arc(x, y, 9, 0, 2 * Math.PI);
+      ctx.arc(x, y, 9, 0, 3 * Math.PI);
      
-      ctx.fillStyle = 'orange'
+      ctx.fillStyle = 'teal'
 
       ctx.fill();
     

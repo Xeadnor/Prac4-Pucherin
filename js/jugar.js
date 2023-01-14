@@ -131,7 +131,12 @@ for (let i = 1; i <= jugadores.value; i++) {
 
   //Cambia título del encabezado
   function cambiarTurnoJugador(jugador) {
-    turno.innerHTML= "Turno del jugador: " + jugador;
+    if (  turno.innerHTML== "Comienza la partida:"){
+      turno.innerHTML= "Comienza la partida: " + jugador;
+    }else{
+      turno.innerHTML= "Le toca tirar a: " + jugador;
+    }
+    
   }
 
   function cambiarFichasJugador(fichas) {
