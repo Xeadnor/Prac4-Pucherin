@@ -39,3 +39,6 @@ Sin colocar ya ni una ficha mas, el jugador a quien el caiga en suerte el nuemro
 Una vez entre al videojuego, podra elegir varias opciones, una de ellas es la duracion de la partida, esta opcion afectara al numero de fichas que se le da a cada jugador, (30,40 o 50) y dos opciones, una version en texto más simple la cual simplemente consta de toda la informacion necesaria y un log donde se va haciendo la partida.
 Luego esta la version grafica, la cual cuenta con sonidos, animaciones, un tablero visible que se actualiza a medida que se juega. 
 Hay una 3 version disponible, la cual es para ejecutarse en nodejs desde el propio visual studio si se desea, esta usa el fichero jugarTexto.js.
+
+<h2>Tests</h2>
+El proyecto cuenta con una carpeta llamada "Test" en la cual se han realizado pruebas para confirmar y garantizar el funcionamiento correcto de las funciones usadas para jugar al pucherin, para poder correr estos estos test, simplemente es necesario descargar el repositorio y ejecutar "indexTest.html" ya que estamos usando mocha.
