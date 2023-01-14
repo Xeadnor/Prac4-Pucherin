@@ -116,10 +116,7 @@ for (let i = 1; i <= jugadores.value; i++) {
   
   //función que vuelve a la pantalla de opciones
   function Volver(){
-    document.getElementById("opciones").style.display="block" 
-    document.getElementById("grafico").style.display="none" 
-    resetGame();
-
+    window.location.reload();
   }
 
   //Cambiar boton a tirar dados:
@@ -763,11 +760,7 @@ for (let i = 2; i <= 11; i++) {
     pintarPuchero();
     botonST.addEventListener("click",Volver)
     function Volver(){
-      window.location.reload();
-      document.getElementById("opciones").style.display="block" 
-      document.getElementById("texto").style.display="none" 
-      resetGame();
-  
+      window.location.reload(); 
     }
 
     
