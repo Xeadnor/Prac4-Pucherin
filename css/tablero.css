@@ -81,10 +81,11 @@ html,body{
     color: white;
     text-align: center;
     display: inline-block;
-    font-size: 12px;
+    font-size: 16px;
     transition-duration: 0.4s;
     cursor: pointer;
     text-decoration: solid;
+    margin-bottom: 3px;
 
   }
   .boton2:hover {
