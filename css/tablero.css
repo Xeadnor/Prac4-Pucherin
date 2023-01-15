@@ -53,28 +53,44 @@ html,body{
 
   }
   .boton{
-    color: #0099CC;
     background: transparent;
-    border: 2px solid #0099CC;
+    border: 1px solid white;
     border-radius: 6px;
     
-    color: white;
-    padding: 5px 37px;
+    color: rgb(255, 255, 255);
+    padding: 1px 41px;
     text-align: center;
     display: inline-block;
     font-size: 16px;
-    margin: 4px 2px;
+    font-weight: bold;
     transition-duration: 0.4s;
     cursor: pointer;
     text-decoration: solid;
-    text-transform: uppercase;
+
   }
   .boton:hover {
-    background-color: #008CBA;
-    color: white;
+    background-color: #fff308;
+    color: rgb(0, 0, 255);
   }
 
-  
+  .boton2{
+    background: transparent;
+    border: 1px solid rgb(169, 169, 169);
+    border-radius: 6px;
+    
+    color: white;
+    text-align: center;
+    display: inline-block;
+    font-size: 12px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    text-decoration: solid;
+
+  }
+  .boton2:hover {
+    background-color: #a3a3a0;
+    color: rgb(255, 255, 255);
+  }
   @media (max-width: 1069px) { /*para tamaños medianos*/
 
     .box{

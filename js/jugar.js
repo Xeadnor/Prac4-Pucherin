@@ -122,7 +122,10 @@ for (let i = 1; i <= jugadores.value; i++) {
   //Cambiar boton a tirar dados:
   botonJ.addEventListener("click",Jugar)
   function cambiarTextoBoton() {
-    botonJ.innerHTML="Tirar dados"
+    if(botonJ.innerHTML=="Empezar a jugar"){
+      sonarStart();
+      botonJ.innerHTML="Tirar dados"
+    }
   }
   
 
@@ -294,55 +297,19 @@ audio.play();
          break;
 
          case 3:
-          arrayPucheros[1].fichasRellenas++;
-          pintarCasilla(canvases[numeroDados-2], numeroDados, arrayPucheros[1].fichasRellenas)
-          if(arrayPucheros[1].fichasRellenas == arrayPucheros[1].fichasCapacidad){
-            arrayPucheros[1].fichasRellenas = 0;
-            sonarCompletado();
-            setTimeout(() => {
-              array[primerT].fichasObtenidas = array[primerT].fichasObtenidas + arrayPucheros[1].fichasCapacidad
-              pintarCasilla(canvases[numeroDados-2], numeroDados, arrayPucheros[1].fichasRellenas)
-            }, 1000)
-          }
+          haSalido(numeroDados);
          break;
 
          case 4:
-          arrayPucheros[2].fichasRellenas++;
-          pintarCasilla(canvases[numeroDados-2], numeroDados, arrayPucheros[2].fichasRellenas)
-          if(arrayPucheros[2].fichasRellenas == arrayPucheros[2].fichasCapacidad){
-            arrayPucheros[2].fichasRellenas = 0;
-            sonarCompletado();
-            setTimeout(() => {
-              array[primerT].fichasObtenidas = array[primerT].fichasObtenidas + arrayPucheros[2].fichasCapacidad
-              pintarCasilla(canvases[numeroDados-2], numeroDados, arrayPucheros[2].fichasRellenas)
-            }, 1000)
-          }
+          haSalido(numeroDados);
          break;
 
          case 5:
-          arrayPucheros[3].fichasRellenas++;
-          pintarCasilla(canvases[numeroDados-2], numeroDados, arrayPucheros[3].fichasRellenas)
-          if(arrayPucheros[3].fichasRellenas == arrayPucheros[3].fichasCapacidad){
-            arrayPucheros[3].fichasRellenas = 0;
-            sonarCompletado();
-            setTimeout(() => {
-              array[primerT].fichasObtenidas = array[primerT].fichasObtenidas + arrayPucheros[3].fichasCapacidad
-              pintarCasilla(canvases[numeroDados-2], numeroDados, arrayPucheros[3].fichasRellenas)
-            }, 1000)
-          }
+          haSalido(numeroDados);
          break;
 
          case 6:
-          arrayPucheros[4].fichasRellenas++;
-          pintarCasilla(canvases[numeroDados-2], numeroDados, arrayPucheros[4].fichasRellenas)
-          if(arrayPucheros[4].fichasRellenas == arrayPucheros[4].fichasCapacidad){
-            arrayPucheros[4].fichasRellenas = 0;
-            sonarCompletado();
-            setTimeout(() => {
-              array[primerT].fichasObtenidas = array[primerT].fichasObtenidas + arrayPucheros[4].fichasCapacidad
-              pintarCasilla(canvases[numeroDados-2], numeroDados, arrayPucheros[4].fichasRellenas)
-            }, 1000)
-          }
+          haSalido(numeroDados);
          break;
 
          case 7:
@@ -353,55 +320,19 @@ audio.play();
          break;  
 
          case 8:
-          arrayPucheros[5].fichasRellenas++;
-          pintarCasilla(canvases[numeroDados-3], numeroDados, arrayPucheros[5].fichasRellenas)
-          if(arrayPucheros[5].fichasRellenas == arrayPucheros[5].fichasCapacidad){
-            arrayPucheros[5].fichasRellenas = 0;
-            sonarCompletado();
-            setTimeout(() => {
-              array[primerT].fichasObtenidas = array[primerT].fichasObtenidas + arrayPucheros[5].fichasCapacidad
-              pintarCasilla(canvases[numeroDados-3], numeroDados, arrayPucheros[5].fichasRellenas)
-            }, 1000)
-          }
+          haSalido(numeroDados);
           break;
 
           case 9:
-          arrayPucheros[6].fichasRellenas++;
-          pintarCasilla(canvases[numeroDados-3], numeroDados, arrayPucheros[6].fichasRellenas)
-          if(arrayPucheros[6].fichasRellenas == arrayPucheros[6].fichasCapacidad){
-            arrayPucheros[6].fichasRellenas = 0;
-            sonarCompletado();
-            setTimeout(() => {
-              array[primerT].fichasObtenidas = array[primerT].fichasObtenidas + arrayPucheros[6].fichasCapacidad
-              pintarCasilla(canvases[numeroDados-3], numeroDados, arrayPucheros[6].fichasRellenas)
-            }, 1000)
-          }
+            haSalido(numeroDados);
           break;
 
           case 10:
-          arrayPucheros[7].fichasRellenas++;
-          pintarCasilla(canvases[numeroDados-3], numeroDados, arrayPucheros[7].fichasRellenas)
-          if(arrayPucheros[7].fichasRellenas == arrayPucheros[7].fichasCapacidad){
-            arrayPucheros[7].fichasRellenas = 0;
-            sonarCompletado();
-            setTimeout(() => {
-              array[primerT].fichasObtenidas = array[primerT].fichasObtenidas + arrayPucheros[7].fichasCapacidad
-              pintarCasilla(canvases[numeroDados-3], numeroDados, arrayPucheros[7].fichasRellenas)
-            }, 1000)
-          }
+            haSalido(numeroDados);
           break;
 
           case 11:
-          arrayPucheros[8].fichasRellenas++;
-          pintarCasilla(canvases[numeroDados-3], numeroDados, arrayPucheros[8].fichasRellenas)
-          if(arrayPucheros[8].fichasRellenas == arrayPucheros[8].fichasCapacidad){ 
-            arrayPucheros[8].fichasRellenas = 0;
-            sonarCompletado();
-            setTimeout(() => {
-              array[primerT].fichasObtenidas = array[primerT].fichasObtenidas + arrayPucheros[8].fichasCapacidad
-              pintarCasilla(canvases[numeroDados-3], numeroDados, arrayPucheros[8].fichasRellenas)
-            }, 1000)
-          }
+            haSalido(numeroDados);
           break;
           
           //en caso de que salga el 12 todas las fichas del puchero se suman al marcador del jugador
@@ -412,6 +343,8 @@ audio.play();
           bote.innerHTML = "Hay " + puchero7.fichasRellenas + " fichas en el puchero";
           break;
       } //fin switch
+
+      
 
       setTimeout(() => {
         if(numeroDados != 12){
@@ -426,6 +359,31 @@ audio.play();
       }, 1100)
     }
 
+      function haSalido(numeroDados){
+        if (numeroDados<7){
+            arrayPucheros[numeroDados-2].fichasRellenas++;
+            pintarCasilla(canvases[numeroDados-2], numeroDados, arrayPucheros[numeroDados-2].fichasRellenas)
+            if(arrayPucheros[numeroDados-2].fichasRellenas == arrayPucheros[numeroDados-2].fichasCapacidad){
+            arrayPucheros[numeroDados-2].fichasRellenas = 0;
+            sonarCompletado();
+            setTimeout(() => {
+                array[primerT].fichasObtenidas = array[primerT].fichasObtenidas + arrayPucheros[numeroDados-2].fichasCapacidad
+                pintarCasilla(canvases[numeroDados-2], numeroDados, arrayPucheros[numeroDados-2].fichasRellenas)
+            }, 1000)
+            }
+        } else{
+            arrayPucheros[numeroDados-3].fichasRellenas++;
+            pintarCasilla(canvases[numeroDados-3], numeroDados, arrayPucheros[numeroDados-3].fichasRellenas)
+            if(arrayPucheros[numeroDados-3].fichasRellenas == arrayPucheros[numeroDados-3].fichasCapacidad){
+            arrayPucheros[numeroDados-3].fichasRellenas = 0;
+            sonarCompletado();
+            setTimeout(() => {
+            array[primerT].fichasObtenidas = array[primerT].fichasObtenidas + arrayPucheros[numeroDados-3].fichasCapacidad
+            pintarCasilla(canvases[numeroDados-3], numeroDados, arrayPucheros[numeroDados-3].fichasRellenas)
+            }, 1000)
+            }
+        }
+      }
     function comprobarSiEs0() {
       let counter = 0;
       for (let i = 0; i < jugadores.value; i++) {
@@ -463,63 +421,23 @@ audio.play();
 
       switch (numeroDados) {
         case 2:
-        if(arrayPucheros[0].fichasRecibidas > 1){
-          sonarCompletado();
-        }        
-           setTimeout(() => {
-             array[primerT].fichasObtenidas = array[primerT].fichasObtenidas + arrayPucheros[0].fichasRellenas
-             arrayPucheros[0].fichasRellenas = 0;
-             pintarCasilla(canvases[numeroDados-2], numeroDados, 0)
-           }, 1000)
-         
+          haSalidoEnRondaFinal(numeroDados);
         break;
 
         case 3:
-          if(arrayPucheros[1].fichasRecibidas > 1){
-             sonarCompletado();
-          }
-         
-          setTimeout(() => {
-            array[primerT].fichasObtenidas = array[primerT].fichasObtenidas + arrayPucheros[1].fichasRellenas
-            arrayPucheros[1].fichasRellenas = 0;
-            pintarCasilla(canvases[numeroDados-2], numeroDados, arrayPucheros[1].fichasRellenas)
-          }, 1000)
+          haSalidoEnRondaFinal(numeroDados);
         break;
 
         case 4:
-          if(arrayPucheros[2].fichasRecibidas > 1){
-            sonarCompletado();
-          }
-          
-          setTimeout(() => {
-            array[primerT].fichasObtenidas = array[primerT].fichasObtenidas + arrayPucheros[2].fichasRellenas
-            arrayPucheros[2].fichasRellenas = 0;
-            pintarCasilla(canvases[numeroDados-2], numeroDados, arrayPucheros[2].fichasRellenas)
-          }, 1000)
+          haSalidoEnRondaFinal(numeroDados);
         break;
 
         case 5:
-          if(arrayPucheros[3].fichasRecibidas > 1){
-            sonarCompletado();
-          }
-         
-          setTimeout(() => {
-            array[primerT].fichasObtenidas = array[primerT].fichasObtenidas + arrayPucheros[3].fichasRellenas
-            arrayPucheros[3].fichasRellenas = 0;
-            pintarCasilla(canvases[numeroDados-2], numeroDados, arrayPucheros[3].fichasRellenas)
-          }, 1000)
+          haSalidoEnRondaFinal(numeroDados);
         break;
 
         case 6:
-          if(arrayPucheros[4].fichasRecibidas > 1){
-            sonarCompletado();
-          }
-         
-          setTimeout(() => {
-            array[primerT].fichasObtenidas = array[primerT].fichasObtenidas + arrayPucheros[4].fichasRellenas
-            arrayPucheros[4].fichasRellenas = 0;
-            pintarCasilla(canvases[numeroDados-2], numeroDados, arrayPucheros[4].fichasRellenas)
-          }, 1000)
+          haSalidoEnRondaFinal(numeroDados);
         break;
 
         case 7:
@@ -529,57 +447,26 @@ audio.play();
         break;  
 
         case 8:
-          if(arrayPucheros[5].fichasRecibidas > 1){
-            sonarCompletado();
-          }
-          setTimeout(() => {
-            array[primerT].fichasObtenidas = array[primerT].fichasObtenidas + arrayPucheros[5].fichasRellenas
-            arrayPucheros[5].fichasRellenas = 0;
-            pintarCasilla(canvases[numeroDados-3], numeroDados, arrayPucheros[5].fichasRellenas)
-          }, 1000)
+          haSalidoEnRondaFinal(numeroDados);
          break;
 
          case 9:
-         if(arrayPucheros[6].fichasRecibidas > 1){
-          sonarCompletado();
-         }
-          
-          setTimeout(() => {
-            array[primerT].fichasObtenidas = array[primerT].fichasObtenidas + arrayPucheros[6].fichasRellenas
-            arrayPucheros[6].fichasRellenas = 0;
-            pintarCasilla(canvases[numeroDados-3], numeroDados, arrayPucheros[6].fichasRellenas)
-          }, 1000)
+          haSalidoEnRondaFinal(numeroDados);
          break;
 
          case 10:
-         if(arrayPucheros[7].fichasRecibidas > 1){
-          sonarCompletado();
-          } 
-    
-          setTimeout(() => {
-            array[primerT].fichasObtenidas = array[primerT].fichasObtenidas + arrayPucheros[7].fichasRellenas
-            arrayPucheros[7].fichasRellenas = 0;
-            pintarCasilla(canvases[numeroDados-3], numeroDados, arrayPucheros[7].fichasRellenas)
-          }, 1000)
+          haSalidoEnRondaFinal(numeroDados);
          break;
 
          case 11:
-         if(arrayPucheros[0].fichasRecibidas > 1){
-          sonarCompletado();
-          } 
-          
-          setTimeout(() => {
-            array[primerT].fichasObtenidas = array[primerT].fichasObtenidas + arrayPucheros[8].fichasRellenas
-            arrayPucheros[8].fichasRellenas = 0;
-            pintarCasilla(canvases[numeroDados-3], numeroDados, arrayPucheros[8].fichasRellenas)
-          }, 1000)
+          haSalidoEnRondaFinal(numeroDados);
          break;
          
          //en caso de que salga el 12 todas las fichas del puchero y todas las fichas del tablero se suman al marcador del jugador
          default:
           
          let fichasTablero = 0;
-
+         sonarBote();
          for (let i = 0; i < arrayPucheros.length; i++) {
 
           fichasTablero += arrayPucheros[i].fichasRellenas
@@ -609,6 +496,31 @@ audio.play();
         pintarPuntuacion();
         comprobarFin();
       }, 1100)
+
+      function haSalidoEnRondaFinal(numeroDados){
+        if (numeroDados<7){
+            if(arrayPucheros[numeroDados-2].fichasRellenas >= 1){
+                sonarCompletado();
+              }        
+                 setTimeout(() => {
+                   array[primerT].fichasObtenidas = array[primerT].fichasObtenidas + arrayPucheros[numeroDados-2].fichasRellenas
+                   arrayPucheros[numeroDados-2].fichasRellenas = 0;
+                   pintarCasilla(canvases[numeroDados-2], numeroDados, arrayPucheros[numeroDados-2].fichasRellenas)
+                 }, 1000)
+               
+        } else{
+            if(arrayPucheros[numeroDados-3].fichasRellenas >= 1){
+                sonarCompletado();
+              }        
+                 setTimeout(() => {
+                   array[primerT].fichasObtenidas = array[primerT].fichasObtenidas + arrayPucheros[numeroDados-3].fichasRellenas
+                   arrayPucheros[numeroDados-3].fichasRellenas = 0;
+                   pintarCasilla(canvases[numeroDados-3], numeroDados, arrayPucheros[numeroDados-3].fichasRellenas)
+                 }, 1000)
+               
+        }
+    }
+
     }
 
     function comprobarFin(){
@@ -723,7 +635,7 @@ for (let i = 2; i <= 11; i++) {
     return 0;
   }
   function  pintarPuchero() {
-    var text = ("<div class='row justify-content-center'><div class='col-4 border'> Puchero </div><div class='col-4 border'> Fichas : " + puchero7.fichasRellenas +  "</div></div>");
+    var text = ("<div class='row justify-content-center'><div class='col-4 border rounded'> Puchero </div><div class='col-4 border rounded'> Fichas : " + puchero7.fichasRellenas +  "</div></div>");
 
     pucheroT.innerHTML= text;
   }

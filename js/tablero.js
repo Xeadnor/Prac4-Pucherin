@@ -187,7 +187,7 @@ function pintarCasilla(canvas, fichas, num){
       // Dibujar la ficha en la posición calculada
       ctx.beginPath();
       ctx.arc(x, y, 9, 0, 2 * Math.PI);
-      if (i < num ) ctx.fillStyle = 'green'
+      if (i < num ) ctx.fillStyle = 'red'
          else ctx.fillStyle = 'white'
       ctx.fill();
     
