@@ -1,4 +1,5 @@
 # Práctica 4- El juego del Pucherín
+<h1>Trabajo realizado por Marta Torres y Pablo Sainz</h1>
 
 <a href="https://xeadnor.github.io/Prac4-Pucherin/">Haz click aqui para poder jugar!</a>
 
